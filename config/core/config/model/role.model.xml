@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="角色"
+    includeDomainField="true"
+    includeVersionField="true"
+    includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+        <gid name="role_gid" verboseName="角色GID" />
+        <xid name="role_xid" verboseName="角色XID" />
+        <string name="role_name" verboseName="角色名称" length="100" nullable="false" />
+        <text name="menu_xml" verboseName="菜单配置XML" />
+        <boolean name="is_reserved" verboseName="系统角色" defaultValue="false">
+            <helpText>系统保留角色不可删除或修改</helpText>
+        </boolean>
+    </fields>
+</model>

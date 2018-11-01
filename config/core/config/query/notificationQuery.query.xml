@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query" model="notification" name="notificationQuery" verboseName="用户" orderBy="-insert_date">
+	<item localKey="id" model="notification_readers" name="readers" referKey="notification_id" title="接收人" />
+</query>

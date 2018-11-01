@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query" model="bundle_rule" name="bundle_rule_Query" verboseName="拼车规则表表">
+  <item localKey="id" model="bundle_rule_direction" name="bundle_rule_direction" referKey="bundle_rule" orderBy="sort_number" asc="true" title="拼车规则明细表">
+</item>
+</query>

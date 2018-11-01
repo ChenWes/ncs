@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="Business Number"
+    includeVersionField="true"
+    includeAuditFields="true">
+    <helpText>
+        <![CDATA[定义具有业务含义的代码生成规则
+        ]]>
+    </helpText>
+    <fields>
+        <string name="code" verboseName="BN Code" length="100" primaryKey="true"/>
+        <string name="model_name" verboseName="数据实体名称" length="100" nullable="false"/>
+        <string name="field_name" verboseName="数据字段名称" length="100" nullable="false"/>
+        <string name="domain_name" verboseName="域" length="100" nullable="true">
+            <helpText>如果为空表示适用所有的数据，如果有值则只适用于指定域的数据</helpText>
+        </string>
+        <string name="context_pattern" verboseName="序列器上下文模式" length="100"  nullable="true">
+            <helpText>可以使用模式${}获取日期时间的各个部分，以及当前数据行的各字段值</helpText>
+        </string>
+        <string name="pattern" verboseName="模式" length="100" nullable="false">
+            <helpText><![CDATA[
+            可以使用模式{}获取日期时间的各个部分，以及当前数据行的各字段值。
+            使用context引用context_pattern的计算结果值，使用sequence引用sequence_pattern的计算结果值。
+            此字段的模式才是Business Number的最终模式。
+            ]]>
+            </helpText>
+        </string>
+        <boolean name="enabled" verboseName="生效" defaultValue="true" />
+    </fields>
+</model>

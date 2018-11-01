@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datas>
+
+    <choice category="接口方向" label="输入" value="01" insert_user="admin" domain_name="DEFAULT"/>
+    <choice category="接口方向" label="输出" value="02" insert_user="admin" domain_name="DEFAULT"/>
+    <choice category="状态" label="初始" value="01" insert_user="admin" domain_name="DEFAULT"/>
+    <choice category="状态" label="成功" value="02" insert_user="admin" domain_name="DEFAULT"/>
+    <choice category="状态" label="失败" value="03" insert_user="admin" domain_name="DEFAULT"/>
+
+</datas>

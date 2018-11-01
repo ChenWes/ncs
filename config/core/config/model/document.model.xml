@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model" verboseName="上传文档" includeVersionField="true" includeAuditFields="true">
+  <helpText></helpText>
+  <fields>
+    <string name="code" verboseName="代码" length="200" primaryKey="true"/>
+    <string name="external_code" verboseName="外部代码" length="200"/>
+    <string name="filename" verboseName="文件名" length="200" />
+    <integer name="size" verboseName="文件大小" />
+    <string name="mime" verboseName="MIME" length="200" />
+  </fields>
+</model>

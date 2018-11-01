@@ -1,0 +1,75 @@
+
+{
+  "MSG_HEADER":{
+
+
+    "TYPE_CODE": "CONTAINER_RETURN_BILL",
+"ID_CODE": "R302_INTERFACE",
+    "VERSION": "1.0"
+},
+"MSG_BODY":
+{
+    "CONTENT": [
+        {
+            "RETURN_BOX_BILL_CODE": "EB170515R401SL0006",
+            "CAR_NO": "沪DJ8833",
+            "DRIVER_CODE": "R401C1YY0002",
+            "DRIVER_NAME": "杨勇",
+            "RETURN_TYPE": 0,
+            "HAS_AUXILIARY": false,
+            "STORAGE_TYPE": 1,
+            "STORAGE_CODE": null,
+            "SCANER": "R401SL3033",
+            "ISSUE_EMP": "R401SL3031",
+            "ISSUE_TIME": "2017-05-15 11:00:24",
+            "CONTAINER_DETAIL_LIST": [
+                {
+                    "NEED_GOODS_CODE": "8",
+                    "SUPPLIER_CODE": "A168",
+                    "SEND_PLACE_CODE": "A1",
+                    "CONTAINER_LABEL_CODE": "FK1705128A168A1005",
+                    "PLATE_QTY": 1,
+                    "SHELF_QTY": 0,
+                    "BOX_QTY": 60
+                },
+                {
+                    "NEED_GOODS_CODE": "8",
+                    "SUPPLIER_CODE": "A168",
+                    "SEND_PLACE_CODE": "A1",
+                    "CONTAINER_LABEL_CODE": "FK1705128A168A1001",
+                    "PLATE_QTY": 1,
+                    "SHELF_QTY": 0,
+                    "BOX_QTY": 60
+                }
+            ]
+        },
+        {
+            "RETURN_BOX_BILL_CODE": "EB170515R401JL0007",
+            "CAR_NO": "鄂S32907",
+            "DRIVER_CODE": "R401C1CS0002",
+            "DRIVER_NAME": "程爽",
+            "RETURN_TYPE": 0,
+            "HAS_AUXILIARY": false,
+            "STORAGE_TYPE": 1,
+            "STORAGE_CODE": null,
+            "SCANER": "R401JL3029",
+            "ISSUE_EMP": "R401JL3027",
+            "ISSUE_TIME": "2017-05-15 11:04:27",
+            "CONTAINER_DETAIL_LIST": [
+                {
+                    "NEED_GOODS_CODE": "8",
+                    "SUPPLIER_CODE": "B316",
+                    "SEND_PLACE_CODE": "A1",
+                    "CONTAINER_LABEL_CODE": "FK1705118B316A1001",
+                    "PLATE_QTY": 7,
+                    "SHELF_QTY": 0,
+                    "BOX_QTY": 206
+                }
+            ]
+        }
+    ],
+    "LENGTH": 66,
+    "TIMESTAMP": "20170216101240",
+    "SIGN": "74BDA18177860DDA83D80364681CF9DE"
+}
+}

@@ -1,0 +1,20 @@
+<layout name="eventPage" title="事件定义" use="lw-page-layout" query="event"
+        searchLayout="eventSearch">
+    <toolbar use="lw-toolbar">
+        <button title="新增" event="new" use="lw-button" permission="query/event/new"/>
+        <button title="保存" event="save" use="lw-button" enabledByStatus="new,edit"
+                enabledJs="!$.is_reserved"
+                permission="query/event/insert,query/event/update"/>
+        <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit"
+                enabledJs="!$.is_reserved"
+                permission="query/event/action/delete"
+                afterActionEvents="eventPage.back"/>
+        <button title="返回" event="back" use="lw-button"/>
+    </toolbar>
+
+    <form use="lw-form">
+        <field name="name" title="名称" use="lw-text" required="true" colspan="12"/>
+        <field colspan="12" use="lw-empty"/>
+        <field name="description" title="说明" required="true" use="lw-textarea" colspan="12"/>
+    </form>
+</layout>

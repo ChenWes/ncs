@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified"> 
+<xs:include schemaLocation="simple-fields.xsd"></xs:include>
+<xs:include schemaLocation="item.xsd"></xs:include>
+<xs:element name="groupQuery" type="groupQuery"/>
+
+<xs:complexType name="groupQuery">
+	<xs:complexContent>
+		<xs:extension base="simple-fields"><!-- query标签 下可以有string，integer等标签 -->
+			<xs:choice maxOccurs="unbounded" minOccurs="1">
+				<xs:element name="join" type="join"  maxOccurs="unbounded" minOccurs="0"></xs:element>
+				<xs:element name="max" type="groupField">
+					<xs:annotation>
+						<xs:documentation>聚合函数max</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="min" type="groupField">
+					<xs:annotation>
+						<xs:documentation>聚合函数min</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="sum" type="groupField">
+					<xs:annotation>
+						<xs:documentation>聚合函数sum</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="avg" type="groupField">
+					<xs:annotation>
+						<xs:documentation>聚合函数avg</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="count" type="countField">
+					<xs:annotation>
+						<xs:documentation>聚合函数count</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<!-- 
+				<xs:element name="custom" type="customAggrField">
+					<xs:annotation>
+						<xs:documentation>自定义聚合函数表达式</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				 -->
+				<xs:element name="group" type="groupField" maxOccurs="unbounded" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>group by的字段</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<!-- 定义query标签的属性 -->
+			<xs:attributeGroup ref="abstractQuery"></xs:attributeGroup>
+			<!-- 
+			<xs:attribute name="id" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			 -->
+			<xs:attribute name="actionProvider" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="eventProvider" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="verboseName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>显示名称</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="valueField" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="template" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="matchFields" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+</xs:schema>

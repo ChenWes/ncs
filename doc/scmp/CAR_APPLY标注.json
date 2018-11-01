@@ -1,0 +1,71 @@
+MSG_HEADER={TYPE_CODE="CAR_APPLY",ID_CODE="R302_INTERFACE",VERSION="1.0"}&MSG_BODY=
+{
+    "CONTENT": [
+        {
+            "APPLY_CODE": "DWEIINTERFACE0517",    -- 申请单号
+            "SUPPLIER_CODE": "B124",              -- 供应商编码
+            "SEND_PLACE_CODE": "A9",              -- 供应商发点 --
+            "NEED_GOODS_CODE": "R",               -- 要货方编码
+            "NEED_PLACE_CODE": "B10",                       -- 要货地点编码
+            "APPLY_TYPE_CODE": 0,                           -- 申请类型
+            "EXPECT_TIME": "2017-05-11 17:40",              -- 期望取货时间 --
+            "DELAY_REASON": null,                           -- 延迟原因--
+            "PV_SOLUTION": null,                            -- PV对策--
+            "SUPPLIER_SOLUTION": null,                      -- 供应商对策--
+            "LOGISTICS_SOLUTION": null,                     -- 物流商对策--
+            "TRAY_DETAILS": [                               -- 申请托盘信息
+                {
+                    "TRAY_CODE": "RB124A9170511S0015",              --托盘编码
+                    "TRAY_TYPE_CODE": "S",                          --托盘类型
+                    "TRAY_ARRI_PLAN_DATE": "2017-05-11 17:40",      --托盘纳期
+                    "UNLOAD_PLACE_CODE": null,                      --卸货位置编码
+                    "TRAY_LENGTH": 1330,                            --托长
+                    "TRAY_WIDTH": 1140,                             --托宽
+                    "TRAY_HEIGHT": 545,                             --托高
+                    "TRAY_WEIGHT": 85100,                           --托重
+                    "BOX_QTY": 1,                                   --包装数
+                    "BOX_DETAILS": [                                   --包装明细信息
+                        {
+                            "PACK_LABEL_CODE": "RK21H763001016",       --包装标签编码
+                            "PART_CODE": "648603DB0H",                 --零件编码
+                            "PART_NAME": null,                         --零件名称
+                            "ISSUE_CODE": "D4S3612",                   --发行号
+                            "ARRI_PLAN_DATE": "2017-05-11 17:40",      --订单纳期
+                            "WORK_ORDER_NO": "5RBM2",                  --当工顺
+                            "QTY": 1                                   --收容数
+                        }
+                    ]
+                },
+                {
+                    "TRAY_CODE": "RB124A9170511S0014",
+                    "TRAY_TYPE_CODE": "S",
+                    "TRAY_ARRI_PLAN_DATE": "2017-05-11 17:40",
+                    "UNLOAD_PLACE_CODE": null,
+                    "TRAY_LENGTH": 1330,
+                    "TRAY_WIDTH": 1140,
+                    "TRAY_HEIGHT": 545,
+                    "TRAY_WEIGHT": 85100,
+                    "BOX_QTY": 1,
+                    "BOX_DETAILS": [
+                        {
+                            "PACK_LABEL_CODE": "RK21H763001016",
+                            "PART_CODE": "648603DB0H",
+                            "PART_NAME": null,
+                            "ISSUE_CODE": "D4S3612",
+                            "ARRI_PLAN_DATE": "2017-05-11 17:40",
+                            "WORK_ORDER_NO": "5RBM2",
+                            "QTY": 1
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "LENGTH": 66,
+    "TIMESTAMP": "20170216101240",
+    "SIGN": "7db97a897db6fb9035ad8de8016dea60"
+}
+
+7db97a897db6fb9035ad8de8016dea60
+
+3ed39242db8d128d402c63f450ebdf2e

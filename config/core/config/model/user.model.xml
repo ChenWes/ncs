@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+           verboseName="用户"
+           includeDomainField="true"
+           includeVersionField="true"
+           includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+        <gid name="user_gid" verboseName="用户GID" />
+        <xid name="user_xid" verboseName="用户XID" />
+        <string name="username" verboseName="用户名" length="100" nullable="false" />
+        <string name="password" verboseName="密码" length="64" nullable="false" />
+        <string name="common_name" verboseName="中文名" length="100" nullable="true"></string>
+        <string name="mobile" verboseName="电话" length="20" nullable="true"></string>
+        <string name="email" verboseName="邮箱" length="100" nullable="true"></string>
+        <string name="weixin_openid" verboseName="微信openid" length="50" nullable="true"></string>
+        <choice choicesCategory="user_auth_type" length="10" name="auth_type" defaultValue="db" nullable="true" primaryKey="false" verboseName="验证方式"/>
+        <boolean name="is_admin" verboseName="管理员" defaultValue="false">
+            <helpText>如果用户是管理员，则其权限不受任何限制。</helpText>
+        </boolean>
+        <foreignKey name="default_role_gid" verboseName="默认角色GID" otherModel="role" nullable="false" fetch="role_name" />
+        <dateTime name="last_login_time" verboseName="最近登录时间" />
+        <dateTime name="pw_expiration_time" verboseName="密码过期时间" />
+        <dateTime name="account_lockout_time" verboseName="账户锁定时间" />
+        <boolean name="is_reserved" verboseName="系统用户" defaultValue="false">
+            <helpText>系统保留用户不可删除或修改</helpText>
+        </boolean>
+        <boolean name="is_external" verboseName="外部用户" defaultValue="false" />
+        <boolean name="force_password_reset" verboseName="强制修改密码" defaultValue="false">
+            <helpText>如果 true 则要求用户在下次登录时必须修改密码。</helpText>
+        </boolean>
+        <dateTime name="effective_time" verboseName="账户生效日期" />
+        <dateTime name="expiration_time" verboseName="账户失效日期" />
+        <smallInteger name="unsuccessful_login_attempts" verboseName="登录失败次数" defaultValue="10">
+            <helpText>尝试以某用户名登录失败次数超出限制后，该账户将被锁定一段时间，这段时间内不能登录。</helpText>
+        </smallInteger>
+        <string name="domain_name" length="32" defaultValue="DEFAULT" />
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>username</field>
+        </index>
+    </indices>
+</model>

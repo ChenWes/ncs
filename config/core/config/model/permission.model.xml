@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="权限"
+    includeVersionField="true"
+    includeAuditFields="true">
+    <fields>
+        <string name="code" verboseName="权限代码" length="200"></string>
+        <string name="description" verboseName="权限说明" length="200"></string>
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>code</field>
+        </index>
+    </indices>
+</model>

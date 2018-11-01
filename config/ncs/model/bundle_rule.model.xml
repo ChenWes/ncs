@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model xmlns="http://logwire.com/schema/model" includeAuditFields="true" includeDeletedField="false" includeDomainField="false" includeVersionField="true" managed="true" verboseName="拼车规则表">
+
+  <fields>
+    <auto length="200" name="id" nullable="false" primaryKey="true" verboseName="编号"/>
+    <string length="100" name="code" nullable="true" primaryKey="false" verboseName="规则编码"/>
+    <string length="200" name="name" nullable="true" primaryKey="false" verboseName="规则名称"/>
+
+    <string length="400" name="special_rules" nullable="true" primaryKey="false" verboseName="特殊规则"/>
+    <string length="200" name="suppliers_codes" nullable="true" primaryKey="false" verboseName="相关供应商编码"/>
+    <string length="300" name="suppliers_names" nullable="true" primaryKey="false" verboseName="相关供应商名称"/>
+
+    <boolean defaultValue="false" name="is_ns" nullable="false" primaryKey="false" verboseName="发点到点组规则">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+
+    <boolean defaultValue="false" name="is_car_type" nullable="false" primaryKey="false" verboseName="不同车型不可拼车">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+
+    <boolean defaultValue="false" name="is_split" nullable="false" primaryKey="false" verboseName="是否可拆分">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+
+    <boolean defaultValue="false" name="time_priority" nullable="false" primaryKey="false" verboseName="纳时优先">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="is_different_car_type" nullable="false" primaryKey="false" verboseName="不同车型可拼车">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute1" nullable="false" primaryKey="false" verboseName="托盘铁架不可拼">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute2" nullable="false" primaryKey="false" verboseName="跨纳时补余高">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute3" nullable="false" primaryKey="false" verboseName="白晚班可拼">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute4" nullable="false" primaryKey="false" verboseName="车长">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute5" nullable="false" primaryKey="false" verboseName="实际车高">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute6" nullable="false" primaryKey="false" verboseName="attribute6">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute7" nullable="false" primaryKey="false" verboseName="attribute7">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute8" nullable="false" primaryKey="false" verboseName="attribute8">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute9" nullable="false" primaryKey="false" verboseName="attribute9">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <boolean defaultValue="false" name="attribute10" nullable="false" primaryKey="false" verboseName="attribute10">
+      <helpText>true = 是 false = 不</helpText>
+    </boolean>
+    <text length="300" name="rmk" nullable="true" primaryKey="false" verboseName="备注"/>
+  </fields>
+</model>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="域域授权"
+    includeAuditFields="true">
+    <helpText>假设 grantor_domain 为 A，grantee_domain 为 B，则表示 B 域中的用户可以访问 A 域的资源。</helpText>
+    <fields>
+        <auto name="domain_domain_grant_id"></auto>
+        <foreignKey name="grantee_domain" verboseName="被授权域" otherModel="domain"></foreignKey>
+        <foreignKey name="grantor_domain" verboseName="授权域" otherModel="domain"></foreignKey>
+        <boolean name="is_write_access" verboseName="是否有写入权限" defaultValue="false"></boolean>
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>grantee_domain</field>
+            <field>grantor_domain</field>
+        </index>
+    </indices>
+</model>

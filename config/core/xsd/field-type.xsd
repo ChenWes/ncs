@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+				<xs:complexType name="field">
+		  			<xs:sequence>
+		  				<xs:element name="helpText" maxOccurs="1" minOccurs="0" type="xs:string"></xs:element>
+		  			</xs:sequence>
+		  			<xs:attribute name="builtin" type="xs:boolean" default="false">
+		  				<xs:annotation>
+		  					<xs:documentation>是否自动创建</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="isExp" type="xs:boolean" default="false">
+		  				<xs:annotation>
+		  					<xs:documentation>是否是表达式</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="name" type="xs:string" use="required">
+		  				<xs:annotation>
+		  					<xs:documentation>名称，不能为空</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="verboseName" type="xs:string">
+		  				<xs:annotation>
+		  					<xs:documentation>显示名称,如果为空默认为name</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="dbColumn" type="xs:string">
+		  				<xs:annotation>
+		  					<xs:documentation>数据库表字段名，如果为空默认为name</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="length" type="xs:int">
+		  				<xs:annotation>
+		  					<xs:documentation>长度</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="precision" type="xs:int">
+		  				<xs:annotation>
+		  					<xs:documentation>精度</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="helpText" type="xs:string">
+		  				<xs:annotation>
+		  					<xs:documentation>帮助文本</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="nameField" type="xs:boolean" default="false">
+		  				<xs:annotation>
+		  					<xs:documentation>是否为Model对象的显示字段，多个显示字段将被用<code>-</code>拼接</xs:documentation>
+		  				</xs:annotation>
+		  			</xs:attribute>
+		  		</xs:complexType>
+				<xs:complexType name="baseField">
+					<xs:complexContent>
+						<xs:extension base="field">
+		  				<xs:attribute name="primaryKey" type="xs:boolean">
+			  				<xs:annotation>
+			  					<xs:documentation>是否主键</xs:documentation>
+			  				</xs:annotation>
+		  				</xs:attribute>
+		  				<xs:attribute name="nullable" type="xs:boolean">
+			  				<xs:annotation>
+			  					<xs:documentation>是否可以为空</xs:documentation>
+			  				</xs:annotation>
+		  				</xs:attribute>
+		  				<xs:attribute name="defaultValue" type="xs:string">
+			  				<xs:annotation>
+			  					<xs:documentation>默认值</xs:documentation>
+			  				</xs:annotation>
+		  				</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+				<xs:complexType name="autoField">
+					<xs:complexContent>
+						<xs:extension base="field">
+		  				<xs:attribute name="dbSequenceName" type="xs:string">
+							<xs:annotation>
+								<xs:documentation></xs:documentation>
+							</xs:annotation>
+		  				</xs:attribute>
+		  				<xs:attribute name="primaryKey" type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>是否主键</xs:documentation>
+							</xs:annotation>
+		  				</xs:attribute>
+		  				<xs:attribute name="nullable" type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>是否可以为空</xs:documentation>
+							</xs:annotation>
+		  				</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+				<xs:complexType name="choiceField">
+					<xs:complexContent>
+						<xs:extension base="baseField">
+		  				<xs:attribute name="choicesCategory" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>可选值所属类别</xs:documentation>
+							</xs:annotation>
+		  				</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+				<xs:complexType name="decimalField">
+					<xs:complexContent>
+						<xs:extension base="baseField">
+				  			<xs:attribute name="maxDigits" type="xs:integer">
+								<xs:annotation>
+									<xs:documentation></xs:documentation>
+								</xs:annotation>
+				  			</xs:attribute>
+				  			<xs:attribute name="decimalPlaces" type="xs:integer">
+								<xs:annotation>
+									<xs:documentation></xs:documentation>
+								</xs:annotation>
+				  			</xs:attribute>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			<xs:complexType name="foreignKeyField">
+				<xs:complexContent>
+					<xs:extension base="baseField">
+		  			<xs:attribute name="otherModel" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>引用的model名称</xs:documentation>
+						</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="fetch" type="xs:string">
+						<xs:annotation>
+							<xs:documentation>生成查询时需要查询的列名称，多列逗号分隔，每列可以使用=指定别名</xs:documentation>
+						</xs:annotation>
+		  			</xs:attribute>
+		  			<xs:attribute name="onDelete" type="onDeleteEnum">
+						<xs:annotation>
+							<xs:documentation>删除 parent 表时的处理方式</xs:documentation>
+						</xs:annotation>
+		  			</xs:attribute>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:simpleType name="onDeleteEnum">
+		  		<xs:restriction base="xs:string">
+			  		<xs:enumeration value="NONE"></xs:enumeration>
+			  		<xs:enumeration value="CASCADE"></xs:enumeration>
+			  		<xs:enumeration value="RESTRICT"></xs:enumeration>
+			  		<xs:enumeration value="UPDATE"></xs:enumeration>
+		  		</xs:restriction>
+		  	</xs:simpleType>
+		  	<xs:simpleType name="fieldType">
+		  		<xs:restriction base="xs:string">
+			  		<xs:enumeration value="integer"></xs:enumeration>
+			  		<xs:enumeration value="long"></xs:enumeration>
+			  		<xs:enumeration value="decimal"></xs:enumeration>
+			  		<xs:enumeration value="string"></xs:enumeration>
+		  		</xs:restriction>
+		  	</xs:simpleType>
+			<xs:complexType name="formulaField">
+				<xs:attribute name="name" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>名称</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="formula" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>自定义表达式</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="xs:string" default="js">
+					<xs:annotation>
+						<xs:documentation></xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:complexType>
+			<xs:complexType name="groupField">
+				<xs:attribute name="name" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>名称</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="verboseName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>显示名称</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="refer" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>引用的field的name，如果field来自于join，格式为joinName__fieldName</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="customSql" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>自定义sql，如果定义了customSql，refer和referFrom的定义失效</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="type" type="fieldType">
+					<xs:annotation>
+						<xs:documentation>自定义sql的SQLType，如果定义了customSql，type不能为空</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:complexType>
+			<xs:complexType name="countField">
+				<xs:attribute name="name" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>名称</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="verboseName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>显示名称</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="customSql" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>自定义sql</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:complexType>
+			<xs:complexType name="customAggrField">
+				<xs:complexContent>
+						<xs:extension base="groupField">
+				  			<xs:attribute name="func" type="xs:string">
+								<xs:annotation>
+									<xs:documentation>UNFINISHED</xs:documentation>
+								</xs:annotation>
+				  			</xs:attribute>
+						</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+</xs:schema>

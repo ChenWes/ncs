@@ -1,0 +1,23 @@
+<model xmlns="http://logwire.com/schema/model"
+       verboseName="异步任务监控"
+       includeDomainField="true"
+       includeVersionField="true"
+       includeAuditFields="true">
+  <helpText>异步任务监控</helpText>
+  <fields>
+    <auto name="id" primaryKey="true"/>
+    <choice choicesCategory="task_status" length="12" name="status" nullable="false" primaryKey="false" verboseName="状态"/>
+    <text name="description" verboseName="描述" />
+    <string name="schedule_code" verboseName="任务计划编号" length="128" nullable="true"></string>
+    <string name="task_handler" verboseName="任务处理器" length="240" nullable="false" />
+    <string name="task_user" verboseName="任务用户" length="128" nullable="false" />
+    <string name="server_name" verboseName="执行任务应用服务器识别名称" length="128" nullable="true" />
+    <string name="server_uuid" verboseName="执行任务应用服务器启动随机数" length="40" nullable="true" />
+    <dateTime name="launch_time" verboseName="发布时间" nullable="false" primaryKey="false"/>
+    <dateTime name="start_time" verboseName="开始执行时间" nullable="true" primaryKey="false"/>
+    <dateTime name="finish_time" verboseName="结束执行时间" nullable="true" primaryKey="false"/>
+    <dateTime name="crash_time" verboseName="宕机中止时间" nullable="true" primaryKey="false"/>
+    <text name="exception" verboseName="执行异常信息" />
+    <text name="log" verboseName="执行日志" />
+  </fields>
+</model>

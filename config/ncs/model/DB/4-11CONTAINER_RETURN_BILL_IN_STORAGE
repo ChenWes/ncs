@@ -1,0 +1,36 @@
+-- Create table
+create table NCS_INFO_CONTAINER_IN_STORAGE
+(
+  id              NUMBER(9) not null,
+  in_storage_list VARCHAR2(200),
+  insert_user     VARCHAR2(128),
+  update_user     VARCHAR2(128),
+  insert_date     TIMESTAMP(6),
+  update_date     TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table
+comment on table NCS_INFO_CONTAINER_IN_STORAGE
+  is '返空单入库扫描信息发送接口';
+-- Add comments to the columns
+comment on column NCS_INFO_CONTAINER_IN_STORAGE.in_storage_list
+  is '入库返空单列表';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table NCS_INFO_CONTAINER_IN_STORAGE
+  add constraint PK_CONTAINER_IN_ID primary key (ID)
+  using index
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+  -- Create sequence
+  create sequence CONTAINER_IN_STORAGE_SEQ
+  minvalue 1
+  maxvalue 9999999999999999999999999999
+  start with 1
+  increment by 1
+  cache 20;

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query"
+       model="domain" verboseName="域">
+    <item localKey="domain_name" model="domain_domain_grant" name="domain_grant" referKey="grantee_domain" title="域授权"></item>
+</query>

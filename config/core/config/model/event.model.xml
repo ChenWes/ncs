@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+       verboseName="事件定义"
+       includeVersionField="true"
+       includeAuditFields="true">
+  <helpText>事件定义</helpText>
+  <fields>
+    <string name="name" verboseName="名称" length="128" primaryKey="true"/>
+    <text name="description" verboseName="说明" />
+    <boolean name="is_reserved" defaultValue="false"></boolean>
+  </fields>
+</model>

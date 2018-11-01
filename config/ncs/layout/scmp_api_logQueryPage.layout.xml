@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lw-page-layout name="scmp_api_logQueryPage" title="接口数据" searchLayout="scmp_api_logQuerySearch" query="scmp_api_logQuery">
+  <lw-toolbar>
+    <lw-button event="action" action="scmpSubmitOutbound" title="提交输出" afterActionEvent="scmp_api_logQueryPage.refresh" />
+    <lw-button event="action" action="ResendRecommand" title="重新提交" afterActionEvent="scmp_api_logQueryPage.refresh"  />
+        <lw-button event="action" action="returnStatus" title="状态更新为初始" afterActionEvent="scmp_api_logQueryPage.refresh"  />
+    <lw-button event="back" title="返回"/>
+  </lw-toolbar>
+  <lw-tabs>
+    <lw-form title="基本信息">
+      <!-- <lw-text name="id_code" title="接口账号" colspan="6"/> -->
+      <!-- <lw-text name="type" title="接口类型" colspan="6"/> -->
+      <lw-select name="id_code" title="接口账号" colspan="6" category="接口账号"/>
+      <lw-select name="type" title="接口类型" colspan="6" category="接口类型"/>
+      <lw-select name="direction" title="接口方向" colspan="6" category="接口方向"/>
+      <lw-select name="status" title="状态" colspan="6" category="状态"/>
+      <lw-text name="transmission" title="OTM对象GID" colspan="6"/>
+        <lw-text name="transmission1" title="OTM对象GID1" colspan="6"/>
+      <lw-empty colspan="18"/>
+      <lw-textarea name="rmk" title="备注" colspan="24" rows="3"/>
+      <lw-textarea name="msg_header" title="请求头" colspan="24" rows="3"/>
+      <!-- <lw-textarea name="msg_body" title="请求内容" colspan="24" rows="10"/> -->
+      <lw-textarea name="msg_response" title="响应" colspan="24" rows="10"/>
+    </lw-form>
+  </lw-tabs>
+
+</lw-page-layout>

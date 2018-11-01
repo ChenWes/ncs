@@ -1,0 +1,122 @@
+﻿<datas>
+  <domain domain_name="DEFAULT" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <role role_gid="DEFAULT.ADMIN_ROLE" role_xid="ADMIN_ROLE" role_name="Admin Role" is_reserved="true" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <role role_gid="DEFAULT.GUEST_ROLE" role_xid="GUEST_ROLE" role_name="Guest Role" is_reserved="true" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <user user_gid="DEFAULT.ADMIN" user_xid="ADMIN" username="ADMIN" password="$2a$10$U0fMtTkMTa8Qeq8ILZSi0Ophaine2/8QiRQOwWRAg9jaP9Q50HcnK"
+    default_role_gid="DEFAULT.ADMIN_ROLE" is_admin="true" is_reserved="true" is_external="false" force_password_reset="false" insert_user="DEFAULT.ADMIN"
+    domain_name="DEFAULT" />
+  <user user_gid="DEFAULT.GUEST" user_xid="GUEST" username="GUEST" password="$2a$10$U0fMtTkMTa8Qeq8ILZSi0Ophaine2/8QiRQOwWRAg9jaP9Q50HcnK"
+    default_role_gid="DEFAULT.GUEST_ROLE" is_admin="false" is_reserved="true" is_external="false" force_password_reset="false" insert_user="DEFAULT.ADMIN"
+    domain_name="DEFAULT" />
+
+    <!-- 事件配置 -->
+  <event name="MODEL_INSERT_BEFORE" description="Model数据新增前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="MODEL_INSERT_AFTER" description="Model数据新增后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="MODEL_UPDATE_BEFORE" description="Model数据更新前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="MODEL_UPDATE_AFTER" description="Model数据更新后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="MODEL_DELETE_BEFORE" description="Model数据删除前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="MODEL_DELETE_AFTER" description="Model数据删除后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_INSERT_BEFORE" description="Query数据新增前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_INSERT_AFTER" description="Query数据新增后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_UPDATE_BEFORE" description="Query数据更新前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_UPDATE_AFTER" description="Query数据更新后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_DELETE_BEFORE" description="Query数据删除前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_DELETE_AFTER" description="Query数据删除后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_PAGING" description="Query分页查询后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="QUERY_GET" description="Query获取单条数据后" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="DOCUMENT_UPLOAD" description="Document上传后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="SELECT_BEFORE" description="查询事件" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  
+  <event name="ADAPT_BEFORE" description="数据集成数据初始化前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="ADAPT_MIDDLE" description="数据集成数据初始化后,持久化前触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+  <event name="ADAPT_AFTER" description="数据持久化后触发" is_reserved="true" insert_user="DEFAULT.ADMIN" />
+
+  <event_handler namespace="user" event_name="MODEL_INSERT_BEFORE" handler="UserModelProvider.onModelInsertBefore" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="user" event_name="MODEL_UPDATE_BEFORE" handler="UserModelProvider.onModelUpdateBefore" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="task_schedule" event_name="MODEL_DELETE_BEFORE" handler="taskScheduleBeforeDelete" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="choice" event_name="MODEL_INSERT_AFTER" handler="choiceClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="choice" event_name="MODEL_DELETE_AFTER" handler="choiceClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="choice" event_name="MODEL_UPDATE_AFTER" handler="choiceClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="event" event_name="MODEL_INSERT_AFTER" handler="eventClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="event" event_name="MODEL_DELETE_AFTER" handler="eventClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="event" event_name="MODEL_UPDATE_AFTER" handler="eventClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="event_handler" event_name="MODEL_INSERT_AFTER" handler="eventHandlerClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="event_handler" event_name="MODEL_DELETE_AFTER" handler="eventHandlerClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="event_handler" event_name="MODEL_UPDATE_AFTER" handler="eventHandlerClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role" event_name="MODEL_INSERT_AFTER" handler="roleMenuClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role" event_name="MODEL_DELETE_AFTER" handler="roleMenuClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role" event_name="MODEL_UPDATE_AFTER" handler="roleMenuClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="domain_domain_grant" event_name="MODEL_INSERT_AFTER" handler="roleVpdClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="domain_domain_grant" event_name="MODEL_DELETE_AFTER" handler="roleVpdClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="domain_domain_grant" event_name="MODEL_UPDATE_AFTER" handler="roleVpdClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role_vpd" event_name="MODEL_INSERT_AFTER" handler="roleVpdClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role_vpd" event_name="MODEL_DELETE_AFTER" handler="roleVpdClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role_vpd" event_name="MODEL_UPDATE_AFTER" handler="roleVpdClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="permission" event_name="MODEL_INSERT_AFTER" handler="rolePermissionClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="permission" event_name="MODEL_DELETE_AFTER" handler="rolePermissionClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="permission" event_name="MODEL_UPDATE_AFTER" handler="rolePermissionClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role_permission" event_name="MODEL_INSERT_AFTER" handler="rolePermissionClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role_permission" event_name="MODEL_DELETE_AFTER" handler="rolePermissionClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="role_permission" event_name="MODEL_UPDATE_AFTER" handler="rolePermissionClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="preference" event_name="MODEL_INSERT_AFTER" handler="preferenceClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="preference" event_name="MODEL_DELETE_AFTER" handler="preferenceClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="preference" event_name="MODEL_UPDATE_AFTER" handler="preferenceClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="search_template" event_name="MODEL_INSERT_AFTER" handler="roleSearchTemplateClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="search_template" event_name="MODEL_DELETE_AFTER" handler="roleSearchTemplateClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="search_template" event_name="MODEL_UPDATE_AFTER" handler="roleSearchTemplateClearCache" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="notification_readersQuery" event_name="QUERY_GET" handler="readNotification" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="bulletinQuery" event_name="QUERY_GET" handler="readBulletin" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="search_template" event_name="MODEL_UPDATE_BEFORE" handler="prettifyText" insert_user="DEFAULT.ADMIN" />
+  <event_handler namespace="search_template" event_name="MODEL_INSERT_BEFORE" handler="prettifyText" insert_user="DEFAULT.ADMIN" />
+
+    <!-- 枚举字典 -->
+  <choice category="preference_scope" label="系统" value="system" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="preference_scope" label="域" value="domain" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="preference_scope" label="用户" value="user" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+
+  <choice category="preference_type" label="字符串" value="string" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="preference_type" label="整数" value="integer" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="preference_type" label="布尔" value="boolean" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+
+  <choice category="notification_status" label="未处理" value="unhandled" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="notification_status" label="已处理" value="handled" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="notification_status" label="已失效" value="invalid" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+
+  <choice category="notification_type" label="消息" value="message" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="notification_type" label="任务" value="task" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="notification_type" label="公告" value="bulletin" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+
+  <choice category="task_status" label="未执行" value="unhandled" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="task_status" label="执行中" value="handling" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="task_status" label="执行成功" value="successful" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="task_status" label="执行失败" value="failed" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="task_status" label="宕机中止" value="crashed" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  
+  <choice category="notification_priority" label="一般" value="1" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="notification_priority" label="重要" value="2" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="notification_priority" label="紧急" value="3" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+
+  <choice category="user_auth_type" label="db" value="db" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="user_auth_type" label="ldap" value="ldap" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  
+  <choice category="value_from" label="固定值" value="common" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="value_from" label="表达式" value="expression" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  
+  <choice category="view_visibility" label="私有" value="private" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="view_visibility" label="域共享" value="domain" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+  <choice category="view_visibility" label="全局共享" value="public" insert_user="DEFAULT.ADMIN" domain_name="DEFAULT" />
+
+    <!-- 首选项 -->
+  <preference key="client.list.editor.lazy" scope="system" type="boolean" value="true" object="" insert_user="DEFAULT.ADMIN" />
+    <!-- preference key="document.upload.accepts" scope="system" type="string" value="" object="" insert_user="DEFAULT.ADMIN" /-->
+  <preference key="export.csv.charset" scope="system" type="string" value="utf-8" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="export.csv.datetime.format" scope="system" type="string" value="yyyy-MM-dd HH:mm:ss" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="export.csv.boolean.format" scope="system" type="string" value="default" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="import.csv.charset" scope="system" type="string" value="utf-8" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="security.password.min-length" scope="system" type="integer" value="0" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="security.password.contains-mixed-cases" scope="system" type="boolean" value="false" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="security.password.contains-digits" scope="system" type="boolean" value="false" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="security.password.contains-punctuations" scope="system" type="boolean" value="false" object="" insert_user="DEFAULT.ADMIN" />
+  <preference key="client.search.keywords.exact" scope="system" type="boolean" value="false" object="" insert_user="DEFAULT.ADMIN" />
+
+</datas>

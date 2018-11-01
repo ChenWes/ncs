@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+       verboseName="计划任务"
+       includeDomainField="true"
+       includeVersionField="true"
+       includeAuditFields="true">
+  <helpText>计划任务</helpText>
+  <fields>
+    <string name="code" verboseName="代码" length="128" nullable="false"></string>
+    <!--
+     TaskSchedule use quartz cron format:
+     http://www.quartz-scheduler.org/documentation/quartz-2.x/tutorials/tutorial-lesson-06.html
+    -->
+    <string name="schedule" verboseName="计划时间" length="250" nullable="false" />
+    <string name="schedule_id" verboseName="计划ID" length="250" />
+    <text name="description" verboseName="描述" />
+    <string name="task_user" verboseName="任务用户" length="128" nullable="false" />
+    <string name="task_handler" verboseName="任务处理器" length="240" nullable="false" />
+    <boolean name="retry" verboseName="重试" defaultValue="false" />
+    <integer name="max_retry_count" verboseName="最大重试次数" defaultValue="0" />
+    <integer name="retry_interval" verboseName="重试间隔(秒)" defaultValue="60" />
+    <boolean name="auto_start" verboseName="自动启动" defaultValue="false"/>
+    
+    <string name="attribute1" verboseName="自定义属性1" length="100" />
+    <string name="attribute2" verboseName="自定义属性2" length="100" />
+    <string name="attribute3" verboseName="自定义属性3" length="100" />
+    <string name="attribute4" verboseName="自定义属性4" length="100" />
+    <string name="attribute5" verboseName="自定义属性5" length="200" />
+    <string name="attribute6" verboseName="自定义属性6" length="200" />
+    <string name="attribute7" verboseName="自定义属性7" length="200" />
+    <string name="attribute8" verboseName="自定义属性8" length="200" />
+  </fields>
+  <indices>
+    <index unique="true">
+      <field>code</field>
+    </index>
+  </indices>
+</model>

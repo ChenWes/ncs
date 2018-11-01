@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+<xs:include schemaLocation="field-type.xsd"></xs:include>
+	<xs:complexType name="simple-fields">
+	  	<xs:choice maxOccurs="unbounded" minOccurs="0">
+	  		<xs:element name="auto" type="autoField"></xs:element>
+	  		<xs:element name="bigInteger" type="baseField"></xs:element>
+	  		<xs:element name="binary" type="baseField"></xs:element>
+	  		<xs:element name="boolean" type="baseField"></xs:element>
+	  		<xs:element name="choice" type="choiceField"></xs:element>
+	  		<xs:element name="date" type="baseField"></xs:element>
+	  		<xs:element name="dateTime" type="baseField"></xs:element>
+	  		<xs:element name="decimal" type="decimalField"></xs:element>
+	  		<xs:element name="file" type="baseField"></xs:element>
+	  		<xs:element name="foreignKey" type="foreignKeyField"></xs:element>
+	  		<xs:element name="gid" type="field"></xs:element>
+	  		<xs:element name="image" type="baseField"></xs:element>
+	  		<xs:element name="integer" type="baseField"></xs:element>
+	  		<xs:element name="json" type="baseField"></xs:element>
+	  		<xs:element name="oneToOne" type="foreignKeyField"></xs:element>
+	  		<xs:element name="smallInteger" type="baseField"></xs:element>
+	  		<xs:element name="string" type="baseField"></xs:element>
+	  		<xs:element name="text" type="baseField"></xs:element>
+	  		<xs:element name="xid" type="field"></xs:element>
+	  	</xs:choice>
+	</xs:complexType>
+</xs:schema>

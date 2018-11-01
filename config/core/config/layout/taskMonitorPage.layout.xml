@@ -1,0 +1,21 @@
+<layout name="taskMonitorPage" title="任务监控" use="lw-page-layout" query="task_monitor" searchLayout="taskMonitorSearch">
+  <toolbar use="lw-toolbar">
+    <button title="返回" event="back" use="lw-button" />
+  </toolbar>
+
+  <form use="lw-form">
+    <field name="task_handler" title="任务处理器" use="lw-text" colspan="6" enabled="false" />
+    <field name="task_user" title="任务用户" use="lw-text" colspan="6" enabled="false" />
+    <field name="server_name" title="执行任务应用服务器识别名称" use="lw-text" colspan="6" />
+    <field use="lw-empty" colspan="6"/>
+    <field name="status_label" title="状态" use="lw-text" colspan="6" />
+    <field name="description" title="描述" use="lw-text" colspan="6" />
+    <field use="lw-empty" colspan="12"/>
+    <field name="launch_time" title="发布时间" use="lw-date" format="yyyy-MM-dd HH:mm:ss" colspan="6" type="datetime"/>
+    <field name="start_time" title="开始执行时间" use="lw-date" format="yyyy-MM-dd HH:mm:ss" colspan="6" type="datetime"/>
+    <field name="finish_time" title="结束执行时间" use="lw-date" format="yyyy-MM-dd HH:mm:ss" colspan="6" type="datetime"/>
+    <field name="crash_time" title="宕机中止时间" use="lw-date" format="yyyy-MM-dd HH:mm:ss" colspan="6" type="datetime"/>
+    <field name="exception" title="执行异常信息" use="lw-text" colspan="24" />
+    <field name="log" title="执行日志" use="lw-text" colspan="24" />
+  </form>
+</layout>

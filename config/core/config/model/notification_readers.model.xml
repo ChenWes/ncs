@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../t01/xsd/model.xsd"
+    verboseName="通知接收人"
+    includeDomainField="true"
+    includeVersionField="true"
+    includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+    	<foreignKey name="notification_id" otherModel="notification" dbColumn="notification_id" verboseName="通知ID"/>
+    	<foreignKey name="user_id" otherModel="user" dbColumn="user_id" verboseName="用户ID"/>
+    	<boolean name="is_read" dbColumn="is_read" verboseName="是否已读"/>
+    </fields>
+    <indices>
+      <index unique="true">
+        <field>notification_id</field>
+        <field>user_id</field>
+      </index>
+    </indices>
+</model>

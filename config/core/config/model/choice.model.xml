@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+       verboseName="枚举字典"
+       includeDomainField="true"
+       includeVersionField="true"
+       includeAuditFields="true">
+  <helpText></helpText>
+  <fields>
+    <auto name="choice_id"></auto>
+    <string name="category" verboseName="枚举类型" length="200" />
+    <string name="label" verboseName="选项名" nullable="false" length="200" />
+    <string name="value" verboseName="选项值" nullable="false" length="200" />
+    <integer name="seq" verboseName="序号" nullable="false" defaultValue="100"/>
+    <string name="uf1" verboseName="自定义1" length="200" />
+    <string name="uf2" verboseName="自定义2" length="200" />
+  </fields>
+  <indices>
+    <index unique="true">
+      <field>category</field>
+      <field>label</field>
+      <field>domain_name</field>
+    </index>
+  </indices>
+</model>

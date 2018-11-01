@@ -1,0 +1,46 @@
+
+{
+  "MSG_HEADER":{
+    "TYPE_CODE": "CHECK_IN_DETAILS",
+"ID_CODE": "R302_INTERFACE",
+    "VERSION": "1.0"
+},
+"MSG_BODY":
+
+{
+    "CONTENT": [
+        {
+            "TRANSPORT_BILL_CODE": "TCP170515R401C10050",
+            "CAR_NO": "辽BM2591",
+            "DRIVER_CODE": "R401C1SL0001",
+            "DRIVER_NAME": "石亮",
+            "CHECK_IN_TIME": "2017-05-15 11:57:19",
+            "NEED_GOODS_CODE": "8",
+            "NEED_PLACE_CODE": "PA1",
+            "CAR_ABNORMITY_LIST": [],
+            "TRAY_SCAN_DETAIL_LIST": [
+                {
+                    "TRAY_CODE": "8B010A1170515S0008",
+                    "SCAN_TIME": "2017-05-15 11:55:46",
+                    "TRAY_ABNORMITY_LIST": []
+                },
+                {
+                    "TRAY_CODE": "8B193A1170515F0102",
+                    "SCAN_TIME": "2017-05-15 11:56:45",
+                    "TRAY_ABNORMITY_LIST": [
+                        "G"
+                    ]
+                }
+            ],
+          "DELIVERY_BILL_LIST": [
+                "8PA1B193A15F1I1",
+                "8PA1B193A15F1I2"
+            ],
+            "SCANER": "81001"
+        }
+    ],
+    "LENGTH": 66,
+    "TIMESTAMP": "20170216101240",
+    "SIGN": "74BDA18177860DDA83D80364681CF9DE"
+}
+}

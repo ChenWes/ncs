@@ -1,0 +1,62 @@
+-- Create table
+create table NCS_INFO_OUT_STORAGE_DETAILS
+(
+  id                  NUMBER(9) not null,
+  transport_bill_code VARCHAR2(50) not null,
+  car_no              VARCHAR2(50),
+  driver_code         VARCHAR2(20),
+  driver_name         VARCHAR2(20),
+  out_storage_time    VARCHAR2(30),
+  storage_code        VARCHAR2(20),
+  tray_code_list      VARCHAR2(200),
+  delivery_bill_list  VARCHAR2(200),
+  scaner              VARCHAR2(50),
+  insert_user         VARCHAR2(128),
+  update_user         VARCHAR2(128),
+  insert_date         TIMESTAMP(6),
+  update_date         TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table
+comment on table NCS_INFO_OUT_STORAGE_DETAILS
+  is '出库实绩发送接口';
+-- Add comments to the columns
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.id
+  is 'ID';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.transport_bill_code
+  is '运单号';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.car_no
+  is '车牌号';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.driver_code
+  is '司机编码';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.driver_name
+  is '司机姓名';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.out_storage_time
+  is '出库时间  string  yyyy-MM-dd hh:mm:ss格式，出库扫描结束时间';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.storage_code
+  is '仓库编码';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.tray_code_list
+  is '出库托盘编码';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.delivery_bill_list
+  is '出库交货单编码';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.scaner
+  is '出库扫描人编码';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.insert_user
+  is '插入人';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.update_user
+  is '更新人';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.insert_date
+  is '插入时间';
+comment on column NCS_INFO_OUT_STORAGE_DETAILS.update_date
+  is '更新时间';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table NCS_INFO_OUT_STORAGE_DETAILS
+  add constraint PK_OUT_STORAGE_DETAILS_ID primary key (ID)
+  using index
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;

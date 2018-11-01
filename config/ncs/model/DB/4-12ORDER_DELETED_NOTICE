@@ -1,0 +1,36 @@
+-- Create table
+create table NCS_INFO_ORDER_D_NOTICE
+(
+  id                 NUMBER(9) not null,
+  deleted_order_list VARCHAR2(200),
+  insert_user        VARCHAR2(128),
+  update_user        VARCHAR2(128),
+  insert_date        TIMESTAMP(6),
+  update_date        TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table
+comment on table NCS_INFO_ORDER_D_NOTICE
+  is '订单删除信息通知接口';
+-- Add comments to the columns
+comment on column NCS_INFO_ORDER_D_NOTICE.deleted_order_list
+  is '已删除订单列表';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table NCS_INFO_ORDER_D_NOTICE
+  add constraint PK_ORDER_D_ID primary key (ID)
+  using index
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+  -- Create sequence
+  create sequence NCS_INFO_ORDER_D_NOTICE_SEQ
+  minvalue 1
+  maxvalue 9999999999999999999999999999
+  start with 1
+  increment by 1
+  cache 20;

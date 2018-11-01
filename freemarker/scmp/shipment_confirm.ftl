@@ -1,0 +1,46 @@
+<Transmission>
+  <TransmissionHeader>
+    <UserName>NCS.INTEGRATION_SCMP</UserName>
+    <Password Type="#PasswordDigest">SiymIPzkKmk1cyGDywLaiW9zBIix4bckgtcv3eAQKkI=</Password>
+  </TransmissionHeader>
+  <TransmissionBody>
+    <#list shipments as header>
+    <GLogXMLElement>
+      <TransactionHeader/>
+     			<ActualShipment>
+				<Shipment>
+					<ShipmentHeader>
+						<ShipmentGid>
+							<Gid>
+								<DomainName>NCS</DomainName>
+								<Xid>${header.TRANSPORT_BILL_CODE_3PL}</Xid>
+								<!-- 运单号 TRANSPORT_BILL_CODE_3PL -->
+							</Gid>
+						</ShipmentGid>
+						<TransactionCode>IU</TransactionCode>
+						<InternalShipmentStatus>
+							<StatusTypeGid>
+								<Gid>
+									<DomainName>NCS</DomainName>
+									<Xid>NCS_SHIP_PLAN</Xid>
+								</Gid>
+							</StatusTypeGid>
+							<StatusValueGid>
+								<Gid>
+									<DomainName>NCS</DomainName>
+									<Xid>NCS_SHIP_PLAN_TM_COMFIRMED</Xid>
+								</Gid>
+							</StatusValueGid>
+						</InternalShipmentStatus>
+						<FlexFieldStrings>
+							<Attribute1>${header.SCHEME_CODE}</Attribute1>
+            	<Attribute6>${header.TRANSPORT_BILL_CODE}</Attribute6>
+              <Attribute16>TM配车已确认</Attribute16>
+						</FlexFieldStrings>
+					</ShipmentHeader>
+				</Shipment>
+			</ActualShipment>
+    </GLogXMLElement>
+    </#list>
+  </TransmissionBody>
+</Transmission>

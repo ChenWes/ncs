@@ -1,0 +1,20 @@
+<layout name="roleSearch" title="角色管理" use="lw-search-layout" pageLayout="rolePage" query="role" keyFields="role_xid,role_name">
+  <toolbar use="lw-search-form" keyPlaceholder="输入角色名称">
+    <button title="新增" event="new" use="lw-button" permission="query/roleQuery/new"/>
+  </toolbar>
+
+  <list use="lw-list" index="true" editColumn="true" height="450">
+    <field name="role_gid" title="角色GID" use="lw-list-label" width="200" sortable="true" />
+    <field name="role_xid" title="角色XID" use="lw-list-label" width="200" sortable="true" />
+    <field name="domain_name" title="域" width="200" use="lw-list-label" />
+    <field name="role_name" title="角色名称" width="200" use="lw-list-label" />
+    <field name="is_reserved" title="系统角色" use="lw-list-checkbox" />
+
+    <field name="insert_user" title="创建人" titleCode="model.insert_user" use="lw-list-label" />
+    <field name="insert_date" title="创建时间" titleCode="model.insert_date" use="lw-list-label" width="150" type="datetime" />
+    <field name="update_user" title="修改人" titleCode="model.update_user" use="lw-list-label" />
+    <field name="update_date" title="最后修改时间" titleCode="model.update_date" use="lw-list-label" width="150" type="datetime" />
+  </list>
+
+  <paging use="lw-paging" />
+</layout>

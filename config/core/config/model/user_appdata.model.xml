@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+           verboseName="用户应用数据"
+           includeVersionField="true"
+           includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+        <foreignKey name="user_gid" verboseName="用户" otherModel="user"></foreignKey>
+        <string name="key" verboseName="键" length="100" nullable="false" />
+        <string name="value" verboseName="值" length="256" nullable="false" />
+        <string name="name" verboseName="名称" length="256" nullable="true" />
+    </fields>
+    <indices>
+        <index>
+            <field>user_gid</field>
+        </index>
+    </indices>
+</model>

@@ -1,0 +1,105 @@
+{
+  "MSG_HEADER": {
+    "TYPE_CODE": "CAR_APPLY",
+    "ID_CODE": "R302_INTERFACE",
+    "VERSION": "1.0"
+  },
+  "MSG_BODY": {
+    "CONTENT": [
+
+      {
+        "APPLY_CODE": "XYIINTERFACE0656",
+        "SUPPLIER_CODE": "B189",
+        "SEND_PLACE_CODE": "Z1",
+        "NEED_GOODS_CODE": "L",
+        "NEED_PLACE_CODE": "BA0",
+        "APPLY_TYPE_CODE": 0,
+        "EXPECT_TIME": "2017-06-11 17:40",
+        "DELAY_REASON": null,
+        "PV_SOLUTION": null,
+        "SUPPLIER_SOLUTION": null,
+        "LOGISTICS_SOLUTION": null,
+        "TRAY_DETAILS": [
+          {
+            "TRAY_CODE": "F0001",
+            "TRAY_TYPE_CODE": "F",
+            "TRAY_ARRI_PLAN_DATE": "2017-06-11 17:40",
+            "UNLOAD_PLACE_CODE": null,
+            "TRAY_LENGTH": 1000,
+            "TRAY_WIDTH": 1100,
+            "TRAY_HEIGHT": 1200,
+            "TRAY_WEIGHT": 1300,
+            "BOX_QTY": 1,
+            "BOX_DETAILS": [
+              {
+                "PACK_LABEL_CODE": "RK21H763001016",
+                "PART_CODE": "748685M111",
+                "PART_NAME": null,
+                "ISSUE_CODE": "M111",
+                "ARRI_PLAN_DATE": "2017-06-11 17:40",
+                "WORK_ORDER_NO": "D4E0648",
+                "QTY": 1
+              }
+            ]
+          },
+          {
+            "TRAY_CODE": "F0002",
+            "TRAY_TYPE_CODE": "F",
+            "TRAY_ARRI_PLAN_DATE": "2017-06-11 17:40",
+            "UNLOAD_PLACE_CODE": null,
+            "TRAY_LENGTH": 2000,
+            "TRAY_WIDTH": 2100,
+            "TRAY_HEIGHT": 2200,
+            "TRAY_WEIGHT": 2300,
+            "BOX_QTY": 1,
+            "BOX_DETAILS": [
+              {
+                "PACK_LABEL_CODE": "RK21H763001016",
+                "PART_CODE": "748685M111",
+                "PART_NAME": null,
+                "ISSUE_CODE": "M111",
+                "ARRI_PLAN_DATE": "2017-06-11 17:40",
+                "WORK_ORDER_NO": "D4E0648",
+                "QTY": 1
+              }
+            ]
+          },
+          {
+            "TRAY_CODE": "F0003",
+            "TRAY_TYPE_CODE": "S",
+            "TRAY_ARRI_PLAN_DATE": "2017-06-11 17:40",
+            "UNLOAD_PLACE_CODE": null,
+            "TRAY_LENGTH": 3000,
+            "TRAY_WIDTH": 3100,
+            "TRAY_HEIGHT": 3200,
+            "TRAY_WEIGHT": 3300,
+            "BOX_QTY": 1,
+            "BOX_DETAILS": [
+              {
+                "PACK_LABEL_CODE": "RK21H763001016",
+                "PART_CODE": "748815M111",
+                "PART_NAME": null,
+                "ISSUE_CODE": "M111",
+                "ARRI_PLAN_DATE": "2017-06-11 09:30",
+                "WORK_ORDER_NO": "D4E0659",
+                "QTY": 1
+              },
+              {
+                "PACK_LABEL_CODE": "RK21H763001016",
+                "PART_CODE": "748815M222",
+                "PART_NAME": null,
+                "ISSUE_CODE": "M222",
+                "ARRI_PLAN_DATE": "2017-06-11 09:30",
+                "WORK_ORDER_NO": "D4E0659",
+                "QTY": 1
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "LENGTH": "2",
+    "TIMESTAMP": "20170604010101",
+    "SIGN": "09D8567B9AA8D86A09EEEC919C11684B"
+  }
+}

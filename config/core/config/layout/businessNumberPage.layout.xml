@@ -1,0 +1,22 @@
+<layout name="businessNumberPage" title="业务编码" use="lw-page-layout" query="business_number" searchLayout="businessNumberSearch">
+  <toolbar use="lw-toolbar">
+    <button title="新增" event="new" use="lw-button" permission="query/choice/new" />
+    <button title="保存" event="save" use="lw-button" enabledByStatus="new,edit" permission="query/choice/insert,query/choice/update" />
+    <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit" permission="query/choice/action/delete" afterActionEvents="businessNumberPage.back" />
+    <button title="返回" event="back" use="lw-button" />
+  </toolbar>
+
+  <form use="lw-form">
+    <field name="code" title="代码" use="lw-text" colspan="6" />
+    <field colspan="18" use="lw-empty"/>
+    <field name="model_name" title="数据对象" use="lw-text" colspan="12" />
+    <field name="field_name" title="数据字段" use="lw-text" colspan="12" />
+    <field name="context_pattern" title="上下文模式" use="lw-text" colspan="12" />
+    <field colspan="12" use="lw-empty"/>
+    <field name="pattern" title="模式" use="lw-text" colspan="12" />
+    <field colspan="12" use="lw-empty" />
+    <field name="domain_name" title="Domain Name" titleCode="model.domain_name" use="lw-auto" colspan="6" valueField="domain_name" api="domain/auto" />
+    <field colspan="18" use="lw-empty" />
+    <field name="enabled" title="生效" use="lw-checkbox" colspan="6"/>
+  </form>
+</layout>

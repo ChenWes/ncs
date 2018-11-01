@@ -1,0 +1,40 @@
+<layout name="divisionSearchPage" title="行政区域" use="lw-search-page-layout">
+  <layout name="divisionSearch" title="查询" use="lw-inner-search" query="divisionQuery" keyFields="code,name" colspan="12">
+    <toolbar use="lw-search-form"></toolbar>
+    <list use="lw-list" index="true" editColumn="true" height="450" multiple="false" viewColumn="false">
+      <field name="code" title="编号" titleCode="model.division.code" use="lw-list-label" />
+      <field name="name" title="名称" titleCode="model.division.name" use="lw-list-label" />
+      <field name="level" title="级别" titleCode="model.division.level" use="lw-list-label" width="50" />
+      <field name="sort_weight" title="排序" use="lw-list-label" width="50" />
+      <field name="disabled" title="失效" titleCode="model.division.disabled" use="lw-list-checkbox" width="50" />
+      <field name="parent__name" title="父级" titleCode="model.division.parent" use="lw-list-label" />
+      <field name="parent" title="父级" titleCode="model.division.parent" use="lw-list-label" />
+    </list>
+    <paging use="lw-paging" />
+  </layout>
+
+  <layout name="divisionPage" title="详情" use="lw-inner-page" query="division" colspan="12">
+    <toolbar use="lw-toolbar">
+      <button title="新增" titleCode="layout.new" event="new" use="lw-button" permission="query/division/new" />
+      <button title="保存" titleCode="layout.save" event="save" use="lw-button" enabledByStatus="new,edit" permission="query/division/insert,query/division/update" />
+      <button title="删除" titleCode="layout.delete" event="action" action="delete" use="lw-button" enabledByStatus="edit"
+        permission="query/division/action/delete" />
+    </toolbar>
+    <form use="lw-form">
+      <field name="code" title="编号" titleCode="model.division.code" use="lw-text" colspan="12" required="true" />
+      <field name="parent__name" title="父级" titleCode="model.division.parent" use="lw-auto" colspan="12" valueField="name" api="division/auto">
+        <attribute name="template">${code}(${name})</attribute>
+        <attribute name="matchFields" value="name,code"></attribute>
+        <attribute name="copyFrom" value="code"></attribute>
+        <attribute name="copyTo" value="parent"></attribute>
+      </field>
+      <field name="name" title="名称" titleCode="model.division.name" use="lw-text" colspan="12" />
+      <field name="name1" title="别名1" titleCode="model.division.name1" use="lw-text" colspan="12" />
+      <field name="name2" title="别名2" titleCode="model.division.name2" use="lw-text" colspan="12" />
+      <field name="name3" title="别名3" titleCode="model.division.name3" use="lw-text" colspan="12" />
+      <field name="level" title="级别" titleCode="model.division.level" use="lw-text" type="IntegerField" colspan="12" />
+      <field name="sort_weight" title="排序" use="lw-number" colspan="12" />
+      <field name="disabled" title="失效" titleCode="model.division.disabled" use="lw-checkbox" colspan="12" />
+    </form>
+  </layout>
+</layout>

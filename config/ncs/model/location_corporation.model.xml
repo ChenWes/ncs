@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model xmlns="http://logwire.com/schema/model" includeAuditFields="false" includeDeletedField="false" includeDomainField="false" includeVersionField="false" managed="false" dbTable="location_corporation" verboseName="地点供应商关联表">
+    <fields>
+
+        <string decimalPlaces="0" length="101" name="location_gid" nullable="false" primaryKey="true" verboseName="地点GID"/>
+        <string decimalPlaces="0" length="101" name="corporation_gid" nullable="false" primaryKey="false" verboseName="供应商gid"/>
+
+
+    </fields>
+</model>

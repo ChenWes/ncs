@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="角色资源权限"
+    includeAuditFields="true">
+    <fields>
+        <auto name="role_permission_id"></auto>
+        <foreignKey name="role_gid" verboseName="角色" otherModel="role"></foreignKey>
+        <foreignKey name="user_gid" verboseName="用户" otherModel="user"></foreignKey>
+        <string name="permission" verboseName="权限代码" length="200"></string>
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>role_gid</field>
+            <field>user_gid</field>
+            <field>permission</field>
+        </index>
+    </indices>
+</model>

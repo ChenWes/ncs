@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query" model="source_location" name="source_locationQuery" verboseName="始发点"  sql="source_locationQuery.attribute10 in ('发点','集配')">
+    <join fetch="corporation_gid" localKey="location_gid" model="location_corporation" name="location_corporation" referKey="location_gid" title="承运商"/>
+    <join fetch="corporation_name,corporation_xid" relation="location_corporation" localKey="corporation_gid" model="corporation" name="corporation" referKey="corporation_gid" title="承运商"/>
+</query>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="角色数据权限"
+    includeAuditFields="true">
+    <fields>
+        <auto name="role_vpd_id"></auto>
+        <foreignKey name="role_gid" verboseName="角色" otherModel="role"></foreignKey>
+        <string name="model" verboseName="数据对象" length="200"></string>
+        <string name="read" verboseName="读取权限" length="2000"></string>
+        <string name="write" verboseName="写入权限" length="2000"></string>
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>role_gid</field>
+            <field>model</field>
+        </index>
+    </indices>
+</model>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../t01/xsd/model.xsd"
+    verboseName="通知"
+    includeDomainField="true"
+    includeVersionField="true"
+    includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+    	<auto dbColumn="id" name="id" primaryKey="true"/>
+		<string name="title" dbColumn="title" verboseName="标题" length="100"/>
+		<string name="content" dbColumn="content" verboseName="内容" length="4000"/>
+		<choice choicesCategory="notification_type" name="type" nullable="false" primaryKey="false" verboseName="类型" length="10"/>
+		<choice choicesCategory="notification_status" name="status" nullable="true" primaryKey="false" verboseName="状态" length="10"/>
+		<string name="related_path" dbColumn="related_path" verboseName="内部页面路径" length="200"/>
+		<string name="related_link" dbColumn="related_link" verboseName="外部链接" length="200"/>
+		<string name="task_key" dbColumn="task_key" verboseName="任务通知key" length="50"/>
+		<integer name="task_entity_id" dbColumn="task_entity_id" verboseName="任务通知ID"/>
+		<integer name="priority" dbColumn="priority" verboseName="告警等级"/>
+		<choice choicesCategory="notification_biz_type" name="biz_type" nullable="true" primaryKey="false" verboseName="业务类型" length="10"/>
+    </fields>
+</model>

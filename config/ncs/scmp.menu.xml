@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+	<menu title="调度" icon="list" order="10">
+		<item title="订单推荐" link="/l/ncs_dispatch_order"/>
+		<item title="订单调度" link="/l/ncs_dispatch_shipment"/>
+	</menu>
+	<menu title="日通接口数据表" icon="list" order="10">
+		<item title="接口数据表" link="/l/scmp_api_logQuerySearch"/>
+	</menu>
+	<menu title="拼车规则数据表" icon="list" order="10">
+		<item title="拼车规则表" link="/l/bundle_ruleQuerySearch"/>
+	</menu>
+</menu>

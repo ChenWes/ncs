@@ -1,0 +1,21 @@
+<layout name="taskSchedulePage" title="计划任务" use="lw-page-layout" query="task_schedule" searchLayout="taskScheduleSearch">
+  <toolbar use="lw-toolbar">
+    <button title="新增" event="new" use="lw-button" permission="query/preference/new" />
+    <button title="保存" event="save" use="lw-button" enabledByStatus="new,edit" permission="query/task_schedule/insert,query/task_schedule/update" />
+    <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit" permission="query/task_schedule/action/delete" afterActionEvents="taskSchedulePage.back" />
+    <button title="启动" event="action" action="schedule" use="lw-button" enabledByStatus="edit" permission="query/task_schedule/action/delete" />
+    <button title="停止" event="action" action="cancel_scheduled" use="lw-button" enabledByStatus="edit" permission="query/task_schedule/action/delete" />
+    <button title="立即运行" event="action" action="invoke_scheduled_immediately" use="lw-button" enabledByStatus="edit" permission="query/task_schedule/action/invoke_scheduled_immediately" />
+    <button title="返回" event="back" use="lw-button" />
+  </toolbar>
+
+  <form use="lw-form">
+    <field name="code" title="任务代码" use="lw-text" colspan="12" required="true" />
+    <field name="schedule" title="计划时间" use="lw-text" colspan="12" required="true" />
+    <field name="task_user" title="任务用户" use="lw-auto" api="user/auto" valueField="user_gid" colspan="12" required="true" />
+    <field name="task_handler" title="任务处理器" use="lw-auto" api="/api/meta/auto/task" valueField="value" colspan="12" required="true" />
+    <field name="auto_start" title="自动启用" use="lw-checkbox" colspan="12" required="true" />
+    <field use="lw-empty" colspan="12"/>
+    <field name="schedule_id" title="计划ID" use="lw-text" colspan="12" enabled="false"/>
+  </form>
+</layout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lw-search-layout name="scmp_api_logQuerySearch" title="日通接口数据表"
+  pageLayout="scmp_api_logQueryPage"  query="scmp_api_logQuery" keyFields="id">
+  <lw-search-form excludeFields="schedule_code,driver_wechat_id,servprov_code" keyPlaceholder="接口账号或接口类型">
+    <lw-button event="action" action="scmpSubmitOutbound" title="提交输出" />
+      <lw-button event="action" action="ResendRecommand" title="重新提交"  afterActionEvent="scmp_api_logQuerySearch.refresh" />
+      <lw-button event="action" action="returnStatus" title="状态更新为初始"  afterActionEvent="scmp_api_logQuerySearch.refresh" />
+  </lw-search-form>
+  <lw-list index="true" editColumn="false" height="450" multiple="true"
+    viewColumn="true">
+    <lw-list-label name="id" title="编号" />
+    <lw-list-label name="id_code" title="接口账号"  width="100"/>
+    <lw-list-label name="type" title="接口类型"  width="200"/>
+    <lw-list-label name="direction_label" title="接口方向" />
+    <lw-list-label name="status_label" title="状态" />
+    <lw-list-label name="send_tag" title="发送标记" />
+      <lw-list-label name="transmission" title="OTM对象GID" />
+    <lw-list-label name="insert_user" title="Insert User" titleCode="model.insert_user" />
+    <lw-list-label name="insert_date" title="Insert Time" titleCode="model.insert_date" type="datetime"  width="150"/>
+    <lw-list-label name="update_user" title="Update User" titleCode="model.update_user" />
+    <lw-list-label name="update_date" title="Update Time" titleCode="model.update_date" type="datetime"  width="150"/>
+    <lw-list-label name="old_transmission" title="原始运单号" width="150"/>
+      <lw-list-label name="rmk" title="备注"   width="1000"/>
+  </lw-list>
+  <lw-list-footer
+    pagingOptions="200"
+    pagination="true"
+    selection="true"/>
+
+</lw-search-layout>

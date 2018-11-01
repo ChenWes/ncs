@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+       verboseName="计划任务参数"
+       includeVersionField="true"
+       includeAuditFields="true">
+  <helpText>计划任务参数</helpText>
+  <fields>
+    <foreignKey name="task_schedule" otherModel="task_schedule"/>
+    <string name="name" verboseName="名称" length="240" nullable="false" />
+    <string name="value" verboseName="值" length="240" nullable="false" />
+  </fields>
+</model>

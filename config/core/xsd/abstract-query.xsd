@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+<xs:attributeGroup name="abstractQuery">
+	<xs:attribute name="name" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="model" type="xs:string" use="required">
+		<xs:annotation>
+			<xs:documentation>引用的主表，model或query的名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<!-- 
+	<xs:attribute name="type" type="xs:string" default="dynamic">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="saveable" type="xs:boolean" default="true">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	 -->
+	<xs:attribute name="ignoreDeleted" type="xs:boolean" default="true">
+		<xs:annotation>
+			<xs:documentation>主model的includeDeletedField=true时该属性有效，ignoreDeleted=true,将标记为逻辑删除的记录过滤掉，默认为true</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="joinAsScalarSubquery" type="xs:boolean" default="false">
+		<xs:annotation>
+			<xs:documentation>是否使用scalarSubquery的方式生成查询语句</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="includeFields" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>配置查询主Model的字段，默认所有字段；多个字段,分隔</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="excludeFields" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>配置不查询的主Model字段；如果已经设置了includeFields，excludeFields的设置无效；</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="sql" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>静态sql，在where子句中使用</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="sqlFilter" type="xs:string">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="title" type="xs:string">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<!-- 
+	<xs:attribute name="isModelQuery" type="xs:boolean" default="false">
+		<xs:annotation>
+			<xs:documentation>是否是一个由model转换的query</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	 -->
+	<xs:attribute name="orderBy" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>
+			多个order by字段使用逗号分隔
+			每个order by字段如果使用双下划线分隔，第一部分为join的表的别名,第二部分为字段名
+			多个order by-开头表示排序方式desc，否则asc 
+			当只有一个order by字段时没有-则排序使用配置的asc字段值
+			</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="asc" type="xs:boolean" default="true">
+		<xs:annotation>
+			<xs:documentation>排序是否为asc</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="customFields" type="xs:string">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:attributeGroup>
+</xs:schema>

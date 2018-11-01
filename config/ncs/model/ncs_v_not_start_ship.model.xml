@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model xmlns="http://logwire.com/schema/model" includeAuditFields="false" includeDeletedField="false" includeDomainField="false" includeVersionField="false" managed="false" dbTable="NCS_V_NOT_START_SHIP" verboseName="未发运运单">
+  <fields>
+    <string decimalPlaces="0" length="101" name="shipment_gid" nullable="false" primaryKey="true" verboseName="运单号GID"/>
+          <string decimalPlaces="0" length="101" name="shipment_xid" nullable="false" primaryKey="false" verboseName="运单号"/>
+    <string decimalPlaces="0" length="120" name="shipment_name" nullable="true" primaryKey="false" verboseName="途径地"/>
+    <string decimalPlaces="0" length="150" name="check_in_time" nullable="true" primaryKey="false" verboseName="纳时顺序"/>
+    <decimal decimalPlaces="0" length="10" name="load_length_l" nullable="true" primaryKey="false" verboseName="已装车长左"/>
+    <decimal decimalPlaces="0" length="10" name="load_length_r" nullable="true" primaryKey="false" verboseName="已装车长右"/>
+    <string decimalPlaces="0" length="10" name="car_order" nullable="true" primaryKey="false" verboseName="备注"/>
+    <decimal decimalPlaces="0" length="10" name="total_volume" nullable="false" primaryKey="false" verboseName="已装体积"/>
+    <dateTime decimalPlaces="0" length="0" name="start_time" nullable="true" primaryKey="false" verboseName="工厂发车时间"/>
+    <integer decimalPlaces="0" length="0" name="f_num" nullable="true" primaryKey="false" verboseName="托盘数"/>
+    <integer decimalPlaces="0" length="0" name="s_num" nullable="true" primaryKey="false" verboseName="铁架数"/>
+    <integer decimalPlaces="0" length="0" name="total_ship_unit_count" nullable="true" primaryKey="false" verboseName="总容器数"/>
+    <choice choicesCategory="运输方式" decimalPlaces="0" length="200" name="trans_mode_type" nullable="false" primaryKey="false" verboseName="运输方式">
+      <helpText></helpText>
+    </choice>
+    <string decimalPlaces="0" length="150" name="settle_no" nullable="true" primaryKey="false" verboseName="台账号"/>
+    <string decimalPlaces="0" length="101" name="power_unit_xid" nullable="true" primaryKey="false" verboseName="车牌号"/>
+    <string decimalPlaces="0" length="101" name="driver_xid" nullable="true" primaryKey="false" verboseName="主司机"/>
+    <string decimalPlaces="0" length="150" name="driver_phone" nullable="true" primaryKey="false" verboseName="主司机电话"/>
+    <string decimalPlaces="0" length="101" name="dest_location_xid" nullable="true" primaryKey="false" verboseName="到场"/>
+    <dateTime decimalPlaces="0" length="0" name="end_time" nullable="true" primaryKey="false" verboseName="计划结束时间"/>
+    <dateTime decimalPlaces="0" length="0" name="attribute_date2" nullable="true" primaryKey="false" verboseName="实际结束时间"/>
+    <string decimalPlaces="0" length="50" name="time_sign" nullable="true" primaryKey="false" verboseName="计划日期标记"/>
+    <string decimalPlaces="0" length="50" name="car_type" nullable="false" primaryKey="false" verboseName="车型"/>
+    <string decimalPlaces="0" length="101" name="servprov_xid" nullable="true" primaryKey="false" verboseName="承运商"/>
+    <string decimalPlaces="0" length="150" name="attribute1" nullable="true" primaryKey="false" verboseName="TM配车方案号"/>
+    <string decimalPlaces="0" length="150" name="supplier_code" nullable="true" primaryKey="false" verboseName="供应商编码"/>
+    <string decimalPlaces="0" length="150" name="issue_code" nullable="true" primaryKey="false" verboseName="发行号"/>
+    <string decimalPlaces="0" length="150" name="attribute20" nullable="true" primaryKey="false" verboseName="所属据点"/>
+    <string decimalPlaces="0" length="101" name="dest_loc_list" nullable="true" primaryKey="false" verboseName="日通到点编码"/>
+    <string decimalPlaces="0" length="128" name="insert_user" nullable="false" primaryKey="false" verboseName="创建人"/>
+    <string decimalPlaces="0" length="30" name="dest_zone" nullable="true" primaryKey="false" verboseName="到达据点"/>
+    <string decimalPlaces="0" length="10" name="leftover_goods" nullable="true" primaryKey="false" verboseName="是否尾货"/>
+    <choice choicesCategory="运单状态" decimalPlaces="0" length="200" name="ship_plan_status" nullable="false" primaryKey="false" verboseName="运单状态">
+      <helpText></helpText>
+    </choice>
+    <choice choicesCategory="工厂标记" decimalPlaces="0" length="200" name="factory_sign" nullable="false" primaryKey="false" verboseName="工厂标记">
+      <helpText></helpText>
+    </choice>
+    <choice choicesCategory="发点城市" decimalPlaces="0" length="200" name="source_city" nullable="false" primaryKey="false" verboseName="发点城市">
+        <helpText></helpText>
+    </choice>
+    <string decimalPlaces="0" length="50" name="source_gid" nullable="false" primaryKey="false" verboseName="发点编码"/>
+    <date  name="early_pickup_date" nullable="true" primaryKey="false" verboseName="期望取货时间"/>
+    <date  name="shipment_delivery_date" nullable="true" primaryKey="false" verboseName="到货指示时间"/>
+  </fields>
+</model>

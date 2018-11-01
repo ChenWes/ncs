@@ -1,0 +1,46 @@
+-- Create table
+create table NCS_INFO_TRANSPORT_DETAILS
+(
+  id                      NUMBER(9) not null,
+  transport_bill_code     VARCHAR2(50) not null,
+  transport_bill_code_3pl VARCHAR2(100),
+  car_no                  VARCHAR2(50),
+  driver_code             VARCHAR2(20),
+  driver_name             VARCHAR2(20),
+  scan_time               VARCHAR2(30),
+  supplier_code           VARCHAR2(50),
+  send_place_code         VARCHAR2(50),
+  tray_code_list          VARCHAR2(2000),
+  delivery_bill_list      VARCHAR2(2000),
+  insert_user             VARCHAR2(128),
+  update_user             VARCHAR2(128),
+  insert_date             TIMESTAMP(6),s
+  update_date             TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the columns
+comment on column TRANSPORT_DETAILS.transport_bill_code
+  is '最大长度小于50';
+comment on column TRANSPORT_DETAILS.transport_bill_code_3pl
+  is '3PL自有系统配车方案时提供，否则为空';
+comment on column TRANSPORT_DETAILS.driver_name
+  is '最大长度小于20字符';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table TRANSPORT_DETAILS
+  add constraint ID primary key (ID)
+  using index
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+  -- Create sequence
+  create sequence TRANSPORT_DETAILS_SEQ
+  minvalue 1
+  maxvalue 9999999999999999999999999999
+  start with 1
+  increment by 1
+  cache 20;

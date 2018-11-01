@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model" verboseName="查询模版" includeAuditFields="true">
+  <helpText></helpText>
+  <fields>
+    <string name="layout_name" verboseName="查询界面" length="200" />
+    <string name="title" verboseName="模版标题" length="200" />
+    <string name="domain_name" verboseName="域" length="32" nullable="true"/>
+    <string name="role_gid" verboseName="角色" length="64" nullable="true"/>
+    <string name="user_gid" verboseName="用户" length="64" nullable="true"/>
+    <choice choicesCategory="view_visibility" length="12" name="visibility" nullable="false" primaryKey="false" verboseName="可见性" defaultValue="private"/>
+    <text name="filter_json" verboseName="模版内容" />
+    <boolean name="locked" verboseName="锁定" defaultValue="false"/>
+    <smallInteger name="sort_order" verboseName="排序" nullable="false" defaultValue="1000"/>
+    <boolean name="selected" verboseName="默认视图" nullable="false" defaultValue="false"/>
+  </fields>
+</model>

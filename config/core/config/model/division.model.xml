@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model" includeVersionField="true">
+  <fields>
+    <string name="code" verboseName="编号" length="32" primaryKey="true"></string>
+    <string name="name" verboseName="名称" length="100"></string>
+    <string name="name1" verboseName="别名1" length="100"></string>
+    <string name="name2" verboseName="别名2" length="100"></string>
+    <string name="name3" verboseName="别名3" length="100"></string>
+    <integer name="level" verboseName="级别"></integer>
+    <integer name="sort_weight" verboseName="排序权重" nullable="false" defaultValue="0"></integer>
+    <foreignKey name="parent" verboseName="父级编号" otherModel="this" dbColumn="parent_code" fetch="name" />
+    <boolean name="disabled" verboseName="失效" />
+  </fields>
+</model>

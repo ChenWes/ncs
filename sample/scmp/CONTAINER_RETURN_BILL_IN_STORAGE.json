@@ -1,0 +1,32 @@
+{
+  "MSG_HEADER":{
+    "TYPE_CODE": "CONTAINER_RETURN_BILL_IN_STORAGE",
+ "ID_CODE": "R302_INTERFACE",
+    "VERSION": "1.0"
+},
+  "MSG_BODY":
+{
+    "CONTENT": [
+    {  "IN_STORAGE_LIST":
+       [
+       {
+              "RETURN_BOX_BILL_CODE": "EB170513R401DL0002",
+                "CAR_NO": "粤AP3050",
+                "DRIVER_CODE": "R401C2SGX0003",
+                "DRIVER_NAME": "时更新",
+                "IN_STORAGE_TYPE": 2,
+                "SUPPLIER_CODE": null,
+                "SEND_PLACE_CODE": null,
+                "STORAGE_CODE": "SL",
+                "IN_STORAGE_EMP": "R401SL3038",
+                "IN_STORAGE_TIME": "2017/5/15 10:29:08"
+
+      }
+      ]
+      }
+    ],
+    "LENGTH": 66,
+    "TIMESTAMP": "20170216101240",
+    "SIGN": "74BDA18177860DDA83D80364681CF9DE"
+}
+}

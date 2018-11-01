@@ -1,0 +1,60 @@
+-- Create table
+create table NCS_INFO_CHECK_IN
+(
+  id                    NUMBER(9) not null,
+  transport_bill_code   VARCHAR2(50) not null,
+  car_no                VARCHAR2(50),
+  driver_code           VARCHAR2(20),
+  driver_name           VARCHAR2(20),
+  check_in_time         VARCHAR2(50) not null,
+  need_goods_code       VARCHAR2(50),
+  need_place_code       VARCHAR2(50),
+  car_abnormity_list    VARCHAR2(200),
+  tray_scan_detail_list VARCHAR2(200),
+  delivery_bill_list    VARCHAR2(200),
+  scaner                VARCHAR2(50),
+  insert_user           VARCHAR2(128),
+  update_user           VARCHAR2(128),
+  insert_date           TIMESTAMP(6),
+  update_date           TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table
+comment on table NCS_INFO_CHECK_IN
+  is '验收实绩发送接口';
+-- Add comments to the columns
+comment on column NCS_INFO_CHECK_IN.id
+  is 'ID';
+comment on column NCS_INFO_CHECK_IN.transport_bill_code
+  is '最大长度小于50';
+comment on column NCS_INFO_CHECK_IN.driver_name
+  is '最大长度小于20字符';
+comment on column NCS_INFO_CHECK_IN.check_in_time
+  is 'yyyy-MM-dd hh:mm:ss格式，验收扫描完成时间';
+comment on column NCS_INFO_CHECK_IN.need_goods_code
+  is '1位字符';
+comment on column NCS_INFO_CHECK_IN.need_place_code
+  is '3位字符';
+comment on column NCS_INFO_CHECK_IN.car_abnormity_list
+  is '编码含义详见附表车辆异常信息编码表';
+comment on column NCS_INFO_CHECK_IN.scaner
+  is '最大长度小于30字符';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table NCS_INFO_CHECK_IN
+  add constraint PK_CHECK_IN_ID primary key (ID)
+  using index
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+  -- Create sequence
+create sequence NCS_INFO_CHECK_IN_SQE
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;

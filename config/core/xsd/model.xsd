@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified"> 
+<xs:include schemaLocation="simple-fields.xsd"></xs:include>
+<xs:element name="model" type="model"/>
+  
+<xs:complexType name="model">
+	<xs:sequence>
+		<xs:element name="helpText" maxOccurs="1" minOccurs="0" type="xs:string"></xs:element>
+		<xs:element name="fields" maxOccurs="1" minOccurs="1" type="simple-fields"></xs:element>
+		<xs:element name="indices" maxOccurs="1" minOccurs="0">
+			<xs:complexType>
+				<xs:choice maxOccurs="unbounded">
+					<xs:element name="index">
+						<xs:complexType>
+							<xs:choice maxOccurs="unbounded" minOccurs="0">
+								<xs:element name="field" type="xs:string"></xs:element>
+							</xs:choice>
+							<xs:attribute name="unique" type="xs:boolean"></xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:complexType>
+		</xs:element>
+	</xs:sequence>
+	<xs:attribute name="id" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>ID</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="name" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="verboseName" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>如果不设置，默认和name相同</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="masterModel" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="dbTable" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>如果不设置，默认和name相同</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="dbSchema" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>数据库 Schema,可能用于不自动创建数据库表，且数据库表所属 Schema 与数据库连接用户不同的情况</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="managed" type="xs:boolean" use="optional" default="true">
+		<xs:annotation>
+			<xs:documentation>是否为平台管理的表，如非平台管理的表，将不做任何附加功能的处理</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="builtinAudit" type="xs:boolean" use="optional" default="true">
+		<xs:annotation>
+			<xs:documentation>是否开启Audit字段的自动赋值</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="builtinDomain" type="xs:boolean" use="optional" default="true">
+		<xs:annotation>
+			<xs:documentation>是否开启Domain字段的自动赋值</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="includeDomainField" type="xs:boolean" use="optional" default="false">
+		<xs:annotation>
+			<xs:documentation>是否包含 domain 字段</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="includeDeletedField" type="xs:boolean" use="optional" default="false">
+		<xs:annotation>
+			<xs:documentation>是否包含控制字段 deleted</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="includeVersionField" type="xs:boolean" use="optional" default="false">
+		<xs:annotation>
+			<xs:documentation>是否包含控制字段 version</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="includeAuditFields" type="xs:boolean" use="optional" default="true">
+		<xs:annotation>
+			<xs:documentation>是否包含审核字段 insertUser insertTime updateUser updateTime</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="helpText" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>帮助文本</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="actionProvider" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="eventProvider" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="valueField" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>生成auto时的显示字段</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="template" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>生成auto时的显示内容</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="matchFields" type="xs:string" use="optional">
+		<xs:annotation>
+			<xs:documentation>auto时查询的匹配字段</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:complexType>
+</xs:schema>

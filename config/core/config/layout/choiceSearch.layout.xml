@@ -1,0 +1,28 @@
+<layout
+    name="choiceSearch"
+    title="枚举字典"
+    use="lw-search-layout"
+    pageLayout="choicePage"
+    query="choiceQuery"
+    keyFields="category,label,value">
+
+  <toolbar use="lw-search-form" keyPlaceholder="">
+    <button title="新增" event="new" use="lw-button" permission="query/choice/new" />
+    <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit" permission="query/choice/action/delete"  afterActionEvents="choiceSearch.refresh" />
+    <button title="数据安装" event="action" action="install" use="lw-button" noSelection="true" permission="api/query/choice/action/install" />
+  </toolbar>
+
+  <list use="lw-list" index="true"  multiple="true" editColumn="true" height="450" viewColumn="false">
+    <field name="category" title="枚举类型" use="lw-list-label" width="200"/>
+    <field name="label" title="选项名" use="lw-list-label" />
+    <field name="value" title="选项值" use="lw-list-label" />
+    <field name="seq" title="序号" use="lw-list-label" />
+    <field name="domain_name" title="Domain Name" titleCode="model.domain_name" use="lw-list-label" />
+    <field name="insert_user" title="Insert User" titleCode="model.insert_user" use="lw-list-label" />
+    <field name="insert_date" title="Insert Time" titleCode="model.insert_date" use="lw-list-label" width="150" type="datetime" />
+    <field name="update_user" title="Update User" titleCode="model.update_user" use="lw-list-label" />
+    <field name="update_date" title="Update Time" titleCode="model.update_date" use="lw-list-label" width="150" type="datetime" />
+  </list>
+
+  <paging use="lw-paging" />
+</layout>

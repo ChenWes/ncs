@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu>
+    <menu title="系统配置" icon="cog" titleCode="menu.system-configuration" name="system-configuration">
+        <item title="域管理" link="/l/domainSearch" titleCode="menu.domain-management" name="domain-management"/>
+        <item title="通知管理" link="/l/notificationManage" titleCode="menu.notification-management" name="notification-management"/>
+        <item title="公告管理" link="/l/bulletinSearch" titleCode="menu.bulletin-management" name="bulletin-management"/>
+        <item title="角色管理" link="/l/roleSearch" titleCode="menu.role-management" name="role-management"/>
+        <item title="权限管理" link="/l/permissionSearch" titleCode="menu.permission-management" name="permission-management"/>
+        <item title="用户管理" link="/l/userSearch" titleCode="menu.user-management" name="user-management"/>
+        <item title="枚举字典" link="/l/choiceSearch" titleCode="menu.choice" name="choice"/>
+        <item title="业务编号" link="/l/businessNumberSearch" titleCode="menu.business-number" name="business-number"/>
+        <item title="查询视图" link="/l/searchTemplateSearch" titleCode="menu.query-view" name="query-view"/>
+        <item title="事件定义" link="/l/eventSearch" titleCode="menu.event-definition" name="event-definition"/>
+        <item title="事件处理" link="/l/eventHandlerSearch" titleCode="menu.event-handler" name="event-handler"/>
+        <item title="计划任务" link="/l/taskScheduleSearch" titleCode="menu.task-schedule" name="task-schedule"/>
+        <item title="任务监控" link="/l/taskMonitorSearch" titleCode="menu.task-monitor" name="task-monitor"/>
+        <item title="首选项" link="/l/preferenceSearch" titleCode="menu.preference-configuration" name="preference-configuration"/>
+        <item title="行政区域" link="/l/divisionManager" titleCode="menu.region-manager" name="region-manager"/>
+        <item title="配置加载" link="/config" titleCode="menu.load-configuration" name="load-configuration"/>
+    </menu>
+</menu>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query"
+       model="role" verboseName="角色">
+    <item localKey="role_gid" model="role_permission" name="permission" referKey="role_gid" title="功能权限">
+        <join name="perm" localKey="permission" model="permission" referKey="code" title="权限" fetch="description" />
+    </item>
+    <item localKey="role_gid" model="role_vpd" name="vpd" referKey="role_gid" title="数据权限">
+    </item>
+</query>

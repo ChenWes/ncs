@@ -1,0 +1,32 @@
+<layout name="userSearch" title="用户管理" use="lw-search-layout" pageLayout="userPage" query="user" keyFields="username">
+
+  <toolbar use="lw-search-form" keyPlaceholder="输入用户名">
+    <button title="新增" event="new" use="lw-button" permission="/api/user/new" />
+  </toolbar>
+
+  <list use="lw-list" index="true" editColumn="true" height="450" multiple="false" viewColumn="false">
+    <field name="user_gid" title="用户GID" use="lw-list-label" />
+    <field name="user_xid" title="用户XID" use="lw-list-label" />
+    <field name="domain_name" title="域" titleCode="model.domain" use="lw-list-label" />
+    <field name="username" title="用户名" use="lw-list-label" />
+    <field name="common_name" title="中文名" use="lw-list-label" />
+    <field name="mobile" title="电话" use="lw-list-label" />
+    <field name="email" title="邮箱" use="lw-list-label" />
+    <field name="weixin_openid" title="微信openid" use="lw-list-label" />
+    <field name="default_role_gid__role_name" title="角色" use="lw-list-label" />
+    <field name="is_admin" title="管理员" use="lw-list-checkbox" />
+    <field name="last_login_time" title="最近登录时间" use="lw-list-label" width="150" type="datetime" />
+    <field name="pw_expiration_time" title="密码过期时间" use="lw-list-label" width="150" type="datetime" />
+    <field name="account_lockout_time" title="账户锁定时间" use="lw-list-label" width="150" type="datetime" />
+    <field name="is_reserved" title="系统用户" use="lw-list-checkbox" />
+    <field name="is_external" title="外部用户" use="lw-list-checkbox" />
+    <field name="effective_time" title="账户生效日期" use="lw-list-label" width="150" type="datetime" />
+    <field name="expiration_time" title="账户失效日期" use="lw-list-label" width="150" type="datetime" />
+    <field name="insert_user" title="Insert User" titleCode="model.insert_user" use="lw-list-label" />
+    <field name="insert_date" title="Insert Time" titleCode="model.insert_date" use="lw-list-label" width="150" type="datetime" />
+    <field name="update_user" title="Update User" titleCode="model.update_user" use="lw-list-label" />
+    <field name="update_date" title="Update Time" titleCode="model.update_date" use="lw-list-label" width="150" type="datetime" />
+  </list>
+
+  <paging use="lw-paging" />
+</layout>

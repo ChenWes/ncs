@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model" verboseName="上传文档存储" includeAuditFields="true">
+  <helpText></helpText>
+  <fields>
+    <string name="code" verboseName="代码" length="128" primaryKey="true"/>
+    <binary name="data" verboseName="数据"/>
+  </fields>
+</model>

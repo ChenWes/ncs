@@ -1,0 +1,147 @@
+<lw-layouts name="ncs_dispatch_order" title="订单推荐">
+  <lw-card title="未挑选订单">
+    <lw-inner-search name="not_pick_om" title="未挑选订单" query="ncs_v_not_pick_om" keyFields="order_movement_xid,supplier_code">
+      <lw-search-form name="not_pick" keyPlaceholder="供应商">
+        <lw-button name="ncsDispatchOrderRecommand" title="按车推荐订单" event="action" action="ncsDispatchOrderRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+        <lw-button name="ncsPickOrderRecommand" title="手工选单(多选)" event="action" action="ncsPickOrderRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+        <lw-button name="ncsAdjustOrderMoventRecommand" title="拆单" event="action" action="ncsAdjustOrderMoventRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+      </lw-search-form>
+      <lw-list index="true" height="250" multiple="true" viewColumn="false">
+
+        <lw-list-label name="supplier_code" title="供应商编码" width="75"/>
+        <lw-list-label name="send_location" title="发点" width="45"/>
+        <lw-list-label name="packaged_item_sign" title="标识" width="45"/>
+        <lw-list-label name="part_code" title="零件号码" width="90"/>
+        <lw-list-label name="issue_code" title="发行号" width="75"/>
+        <lw-list-label name="dest_location_xid" title="到场" width="60"/>
+        <lw-list-label name="late_delivery_date" title="纳期" width="135" type="datetime"/>
+
+        <lw-list-label name="length" title="托盘长" width="50"/>
+        <lw-list-label name="width" title="托盘宽" width="50"/>
+        <lw-list-label name="height" title="托盘高" width="50"/>
+        <lw-list-label name="total_ship_unit_count" title="总容器数" width="65"/>
+        <lw-list-label name="adjust_ship_unit_count" title="调整容器数" enabledJs="true" use="lw-list-number"/>
+        <lw-list-label name="total_volume" title="总体积" width="60"/>
+        <lw-list-label name="total_weight" title="总重量" width="60"/>
+        <lw-list-label name="car_type" title="车型" width="55"/>
+        <lw-list-label name="production_line" title="生产线" width="60"/>
+        <lw-list-label name="tray_type" title="优尼类型" width="80"/>
+        <lw-list-label name="receive_goods_party" title="要货方" width="70"/>
+        <lw-list-label name="plant_name" title="工厂名称"/>
+
+        <lw-list-label name="f_num" title="托盘数" width="50"/>
+        <lw-list-label name="s_num" title="铁架数" width="50"/>
+<lw-list-label name="delivery_order_no" title="交货单号" width="140"/>
+        <lw-list-label name="early_pickup_date" title="期望/预计取货时间" width="120" type="date"/>
+        <lw-list-label name="arrival_point_date" title="到货指示日期" width="110" type="date"/>
+        <lw-list-label name="plan_date_sign" title="计划日期标记" width="90"/>
+        <lw-list-label name="rule_name1" title="车次" width="110"/>
+        <lw-list-label name="trans_mode_type" title="运输类型" width="80"/>
+        <lw-list-label name="tray_type_code" title="容器类型" width="80"/>
+        <lw-list-label name="order_movement_xid" title="订单号" width="140"/>
+        <lw-list-label name="split_original_omgid" title="拆单"/>
+        <lw-list-label name="source_location_name" title="供应商名称" width="100"/>
+        <lw-list-label name="source_location_xid" title="出货地点编码" width="150"/>
+        <lw-list-label name="dest_location_name" title="要货地点名称"/>
+        <lw-list-label name="ncs_plan_date" title="日通计划日期" width="150" type="datetime"/>
+        <lw-list-label name="order_movement_gid" title="系统路由GID"/>
+        <lw-list-label name="order_release_gid" title="系统订单GID"/>
+        <lw-list-label name="order_release_name" title="TM申请单号"/>
+        <lw-list-label name="insert_user" title="创建人"/>
+        <lw-list-label name="user_group" title="担当者"/>
+
+      </lw-list>
+      <!-- <lw-list-footer pagination="true" selection="true"/> -->
+      <lw-list-footer
+        pagingOptions="50,100,200"
+        pagination="true"
+        selection="true"
+        summary="selected"
+        summaryTemplate="合计：托盘数=${ f_num} 铁架数=${ s_num} 总体积=${ total_volume.toFixed(2)} 总容器数=${ total_ship_unit_count}  总重量=${ total_weight} "
+        summaryFields="f_num,s_num,total_volume,total_ship_unit_count,total_weight" aggregationFields="f_num||sum,s_num||sum,total_volume||sum,total_ship_unit_count||sum,total_weight||sum"
+      />
+
+    </lw-inner-search>
+  </lw-card>
+
+  <lw-card title="已挑选订单">
+    <lw-inner-search name="picked_om" title="已挑选订单" query="ncs_v_picked_om" keyFields="order_movement_xid">
+      <lw-search-form name="picked">
+
+        <lw-button name="ncsCancelDispatchOrderRecommand" title="取消推荐" event="action" action="ncsCancelDispatchOrderRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+        <lw-button name="ncsRenewLoadByHandRecommand" title="手工重新装载" event="action" action="ncsRenewLoadByHandRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+        <lw-button name="ncsGenerateShipmentRecommand" title="生成整车运单" event="action" action="ncsGenerateShipmentRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+        <lw-button name="ncsGenerateHalfShipmentRecommand" title="标记尾货运单" event="action" action="ncsGenerateHalfShipmentRecommand" afterActionEvents="not_pick_om.refresh,picked_om.refresh"/>
+        <lw-button name="ncsSigntimeRecommand" title="标记到货时间" event="action" action="ncsSigntimeRecommand" afterActionEvents="picked_om.refresh"/>
+
+      </lw-search-form>
+      <lw-list index="true" height="250" multiple="true" viewColumn="false">
+        <lw-list-label name="supplier_code" title="供应商编码" width="75"/>
+        <lw-list-label name="send_location" title="发点" width="45"/>
+        <lw-list-label name="packaged_item_sign" title="标识" width="45"/>
+        <lw-list-label name="part_code" title="零件号码" width="90"/>
+        <lw-list-label name="issue_code" title="发行号" width="75"/>
+        <lw-list-label name="dest_location_xid" title="到场" width="60"/>
+        <lw-list-label name="late_delivery_date" title="纳期" width="135" type="datetime"/>
+          <lw-list-label name="adjust_time_sign" title="调整纳期(24H)" enabledJs="true" use="lw-list-date" type="datetime" width="160"/>
+        <lw-list-label name="ship_end_time_sign" title="到货时间" width="65"/>
+        <lw-list-label name="length" title="托盘长" width="50"/>
+        <lw-list-label name="width" title="托盘宽" width="50"/>
+        <lw-list-label name="height" title="托盘高" width="50"/>
+        <lw-list-label name="total_ship_unit_count" title="总容器数" width="65"/>
+        <lw-list-label name="total_volume" title="总体积" width="60"/>
+        <lw-list-label name="total_weight" title="总重量" width="60"/>
+        <lw-list-label name="car_type" title="车型" width="55"/>
+          <lw-list-label name="production_line" title="生产线" width="60"/>
+        <lw-list-label name="length_sign" title="长坐标" width="50"/>
+        <lw-list-label name="with_sign" title="宽坐标" width="50"/>
+        <lw-list-label name="high_sign" title="高坐标" width="50"/>
+        <lw-list-label name="car_length_l" title="左车长" width="50"/>
+        <lw-list-label name="car_length_r" title="右车长" width="50"/>
+        <lw-list-label name="high_residue" title="余高" width="50"/>
+        <lw-list-label name="tray_type" title="优尼类型" width="80"/>
+        <lw-list-label name="receive_goods_party" title="要货方" width="70"/>
+        <lw-list-label name="plant_name" title="工厂名称"/>
+
+        <lw-list-label name="f_num" title="托盘数" width="50"/>
+        <lw-list-label name="s_num" title="铁架数" width="50"/>
+<lw-list-label name="delivery_order_no" title="交货单号" width="80"/>
+        <lw-list-label name="early_pickup_date" title="期望/预计取货时间" width="120" type="date"/>
+        <lw-list-label name="arrival_point_date" title="到货指示日期" width="110" type="date"/>
+
+        <lw-list-label name="plan_date_sign" title="计划日期标记"/>
+        <lw-list-label name="trans_mode_type" title="运输类型" width="80"/>
+        <lw-list-label name="rule_name1" title="车次" width="110"/>
+        <lw-list-label name="tray_type_code" title="容器类型" width="80"/>
+        <lw-list-label name="actual_length" title="实际长度" width="80"/>
+        <lw-list-label name="actual_width" title="实际宽度" width="80"/>
+        <lw-list-label name="actual_high" title="实际高度" width="80"/>
+        <lw-list-label name="order_movement_xid" title="订单号" width="140"/>
+        <lw-list-label name="split_original_omgid" title="拆单"/>
+        <lw-list-label name="source_location_name" title="供应商名称" width="100"/>
+
+        <lw-list-label name="source_location_xid" title="出货地点编码" width="150"/>
+        <lw-list-label name="dest_location_name" title="要货地点名称"/>
+        <lw-list-label name="ncs_plan_date" title="日通计划日期" width="150" type="datetime"/>
+
+        <lw-list-label name="order_movement_gid" title="系统路由GID"/>
+
+        <lw-list-label name="order_release_gid" title="系统订单GID"/>
+        <lw-list-label name="order_release_name" title="TM申请单号"/>
+
+        <lw-list-label name="om3d_insert_user" title="挑选人"/>
+        <lw-list-label name="actual_car_length" title="实际车长" width="80"/>
+        <lw-list-label name="actual_car_high" title="实际车高" width="80"/>
+        <lw-list-label name="plan_use_rule" title="应用规则"/>
+        <lw-list-label name="manual_sign" title="手工挑单"/>
+      </lw-list>
+      <lw-list-footer
+        pagingOptions="50,100,200"
+        pagination="true"
+        selection="true"
+        summary="selected"
+        summaryTemplate="合计：托盘数=${ f_num} 铁架数=${ s_num} 总体积=${ total_volume.toFixed(2)} 总容器数=${ total_ship_unit_count} 左车长=${ car_length_l} 右车长=${ car_length_r}  总重量=${ total_weight} "
+        summaryFields="f_num,s_num,total_volume,total_ship_unit_count,car_length_l,car_length_r,total_weight" aggregationFields="f_num||sum,s_num||sum,total_volume||sum,total_ship_unit_count||sum,car_length_l||sum,car_length_r||sum,total_weight||sum"/>
+    </lw-inner-search>
+  </lw-card>
+</lw-layouts>

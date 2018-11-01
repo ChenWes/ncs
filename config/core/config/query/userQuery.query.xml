@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query" model="user" name="userQuery" verboseName="用户">
+  <join localKey="default_role_gid" model="role" name="role" referKey="role_gid" fetch="role_name" />
+  <item localKey="user_gid" model="user_appdata" name="appdata" referKey="user_gid" title="应用数据" />
+
+  <item localKey="user_gid" model="role_permission" name="permission" referKey="user_gid" title="功能权限">
+    <join name="perm" localKey="permission" model="permission" referKey="code" title="权限" fetch="description" />
+  </item>
+</query>

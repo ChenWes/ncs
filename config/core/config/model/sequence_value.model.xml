@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model xmlns="http://logwire.com/schema/model"
+    verboseName="序列器">
+    <helpText>
+        <![CDATA[序列器引用方可以通过序列器上下文切换使用的序列址。
+        常用的序列器上下文为日期、订单类型、货主等。
+        ]]>
+    </helpText>
+    <fields>
+        <string name="object_id" verboseName="序列器ID" length="100" nullable="false"/>
+        <string name="context" verboseName="序列器上下文" length="100" nullable="false"/>
+        <integer name="next_value" verboseName="下一取值" nullable="false"/>
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>object_id</field>
+            <field>context</field>
+        </index>
+    </indices>
+</model>

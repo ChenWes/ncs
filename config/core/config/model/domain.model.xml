@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+           includeVersionField="true"
+           includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+        <string name="domain_name" length="32" primaryKey="true"></string>
+        <boolean name="is_reserved" verboseName="系统保留" defaultValue="false">
+            <helpText>系统保留域不可删除或修改</helpText>
+        </boolean>
+    </fields>
+</model>

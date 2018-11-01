@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query" model="dest_location" name="dest_locationQuery" verboseName="目的点"  sql="dest_locationQuery.attribute10 in ('到点','集配')"/>

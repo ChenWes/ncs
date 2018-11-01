@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model" verboseName="事件处理" includeVersionField="true" includeAuditFields="true">
+  <helpText>事件与处理器绑定关系</helpText>
+  <fields>
+    <string name="namespace" verboseName="命名空间" length="100" />
+    <string name="event_name" verboseName="事件名称" nullable="false" length="100" />
+    <string name="domain_name" verboseName="域" length="32" />
+    <string name="handler" verboseName="处理器" nullable="false" length="100" />
+    <integer name="priority" verboseName="优先级" defaultValue="1000" />
+    <boolean name="enabled" verboseName="启用" defaultValue="true" />
+
+    <boolean name="asynchronous" verboseName="异步" />
+    <string name="attribute1" verboseName="自定义属性1" length="100" />
+    <string name="attribute2" verboseName="自定义属性2" length="100" />
+    <string name="attribute3" verboseName="自定义属性3" length="100" />
+    <string name="attribute4" verboseName="自定义属性4" length="100" />
+    <string name="attribute5" verboseName="自定义属性5" length="200" />
+    <string name="attribute6" verboseName="自定义属性6" length="200" />
+    <string name="attribute7" verboseName="自定义属性7" length="200" />
+    <string name="attribute8" verboseName="自定义属性8" length="200" />
+  </fields>
+
+  <indices>
+    <index>
+      <field>namespace</field>
+      <field>event_name</field>
+    </index>
+  </indices>
+</model>

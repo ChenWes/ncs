@@ -1,0 +1,58 @@
+<layout name="rolePage" title="角色管理" use="lw-page-layout" query="roleQuery" searchLayout="roleSearch" newDataAction="query_copy_data">
+  <toolbar use="lw-toolbar">
+    <button title="新增" event="new" use="lw-button" permission="query/roleQuery/new" />
+    <button title="复制新增" titleCode="layout.copy" event="new" use="lw-button" enabledByStatus="edit"
+            url="/l/rolePage/new" queryFields="refId" queryFieldsFrom="role_gid"
+            permission="query/roleQuery/new" />
+    <button title="保存" event="save" use="lw-button" enabledByStatus="new,edit" enabledJs="!this.datasetObject.is_reserved" />
+    <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit" enabledJs="!this.datasetObject.is_reserved" afterActionEvents="rolePage.back"/>
+    <button title="返回" event="back" use="lw-button" />
+  </toolbar>
+
+  <lw-tabs>
+    <lw-form title="基本信息">
+      <lw-text name="role_gid" title="角色GID" colspan="6" enabledByStatus="new" required="true" enabledJs="false" />
+      <lw-text name="role_xid" title="角色XID" colspan="6" enabledByStatus="new" required="true" />
+      <lw-auto name="domain_name" title="域" titleCode="model.domain_name" colspan="6" valueField="domain_name" api="domain/auto" required="true" enabledByStatus="new" />
+      <lw-empty colspan="6" />
+      <lw-text name="role_name" title="角色名称" colspan="6" required="true" />
+      <lw-checkbox name="is_reserved" title="系统角色" colspan="6" enabled="false" />
+      <lw-empty colspan="12" />
+      <lw-textarea name="menu_xml" title="菜单XML" colspan="24" required="true" rows="10"/>
+    </lw-form>
+
+    <lw-wrapper title="功能权限">
+      <lw-row style="margin-bottom: 6px">
+        <lw-wrapper colspan="12">
+          <lw-button event="addItem" targetSubDatasetName="permission" title="添加行"/>
+          <lw-button event="removeItem" targetSubDatasetName="permission" title="删除行"/>
+        </lw-wrapper>
+      </lw-row>
+      <lw-raw-item-list name="permission" titleCode="query.roleQuery.permission" subDatasetName="permission" multiple="true" height="300">
+        <lw-list-auto name="perm__description" width="300px" title="名称" titleCode="model.permission.description" valueField="description" api="permission/auto"
+               suggestionWidth="300px" autoCopy="false">
+          <attribute name="matchFields" value="description,code"></attribute>
+          <attribute name="copyFrom" value="code,description"></attribute>
+          <attribute name="copyTo" value="permission,perm__description"></attribute>
+        </lw-list-auto>
+        <lw-list-text name="permission" width="300px" title="代码" titleCode="model.permission.code" required="true" enabledJs="false"/>
+      </lw-raw-item-list>
+    </lw-wrapper>
+
+    <lw-wrapper title="数据权限">
+      <lw-row style="margin-bottom: 6px">
+        <lw-wrapper colspan="12">
+          <lw-button event="addItem" targetSubDatasetName="vpd" title="添加行"/>
+          <lw-button event="removeItem" targetSubDatasetName="vpd" title="删除行"/>
+        </lw-wrapper>
+      </lw-row>
+      <lw-raw-item-list name="vpd" titleCode="query.roleQuery.vpd" subDatasetName="vpd" multiple="true" height="300">
+        <lw-list-auto name="model" width="200px" title="数据对象" titleCode="model.role_vpd.model" api="/api/meta/auto/model"
+                      suggestionWidth="200px" required="true">
+        </lw-list-auto>
+        <lw-list-text name="read" width="500px" title="读取权限" titleCode="model.role_vpd.read" required="true" />
+        <lw-list-text name="write" width="500px" title="写入权限" titleCode="model.role_vpd.write" required="true" />
+      </lw-raw-item-list>
+    </lw-wrapper>
+  </lw-tabs>
+</layout>

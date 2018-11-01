@@ -1,0 +1,81 @@
+<layout name="userPage" title="用户管理" use="lw-page-layout" query="userQuery" searchLayout="userSearch">
+  <toolbar use="lw-toolbar">
+    <button title="新增" event="new" use="lw-button" permissioin="/api/user/new" />
+    <button title="保存" event="save" use="lw-button" enabledByStatus="new,edit" permissioin="/api/user/insert,/api/user/update" enabledJs="!this.datasetObject.is_reserved" />
+    <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit" permission="query/user/action/delete" enabledJs="!this.datasetObject.is_reserved"
+      afterActionEvents="userPage.back" />
+    <button title="返回" event="back" use="lw-button" />
+  </toolbar>
+  <lw-tabs>
+    <form use="lw-form" title="基本信息">
+      <field name="user_gid" title="用户GID" use="lw-text" colspan="6" required="true" enabledJs="false" />
+      <field name="user_xid" title="用户XID" use="lw-text" colspan="6" required="true" enabledByStatus="new" />
+      <field name="domain_name" title="域" titleCode="model.domain_name" use="lw-auto" colspan="6" valueField="domain_name" api="domain/auto"
+        required="true" enabledByStatus="new" />
+      <field use="lw-empty" colspan="6" />
+      <field name="username" title="用户名" use="lw-text" colspan="6" required="true" enabledByStatus="new" />
+      <field name="password_new" title="密码" use="lw-text" type="password" colspan="6" ignoreNameCheck="true" />
+
+      <!--  queryFields="role_name" queryFieldsFrom="domain_name" -->
+      <field name="role__role_name" title="角色" use="lw-auto" colspan="6" valueField="role_name" api="role/auto" suggestionWidth="300px"
+        required="true" autoCopy="false" queryFields="domain_name" queryFieldsFrom="domain_name">
+        <attribute name="matchFields" value="role_name"></attribute>
+        <attribute name="copyFrom" value="role_gid,role_name,domain_name"></attribute>
+        <attribute name="copyTo" value="default_role_gid,role__role_name,domain_name"></attribute>
+      </field>
+      <field use="lw-empty" colspan="6" />
+      
+      <field name="is_admin" title="管理员" use="lw-checkbox" colspan="6" />
+      <field name="is_external" title="外部用户" use="lw-checkbox" colspan="6" />
+      <field name="is_reserved" title="系统用户" use="lw-checkbox" colspan="6" enabled="false" />
+      <field use="lw-empty" colspan="6" />
+      
+      <field name="common_name" title="中文名" use="lw-text" colspan="6"/>
+      <field name="mobile" title="手机" use="lw-text" colspan="6"/>
+      <field name="email" title="邮箱" use="lw-text" colspan="6"/>
+      <field name="weixin_openid" title="微信openid" use="lw-text" colspan="6" enabled="false"/>
+
+      <field name="pw_expiration_time" title="密码过期时间" use="lw-date" colspan="6" />
+      <field name="effective_time" title="账户生效日期" use="lw-date" colspan="6" />
+      <field name="expiration_time" title="账户失效日期" use="lw-date" colspan="6" />
+      <field name="account_lockout_time" title="账户锁定时间" use="lw-date" colspan="6" enabled="false" />
+      <field name="last_login_time" title="最近登录时间" use="lw-date" colspan="6" enabled="false" />
+      <field use="lw-empty" colspan="18" />
+      <field name="insert_user" title="Insert User" titleCode="model.insert_user" use="lw-text" colspan="6" enabled="false" />
+      <field name="insert_date" title="Insert Time" titleCode="model.insert_date" use="lw-date" colspan="6" enabled="false" />
+      <field name="update_user" title="Update User" titleCode="model.update_user" use="lw-text" colspan="6" enabled="false" />
+      <field name="update_date" title="Update Time" titleCode="model.update_date" use="lw-date" colspan="6" enabled="false" />
+    </form>
+    <lw-wrapper title="应用数据">
+      <lw-row style="margin-bottom: 6px">
+        <lw-wrapper colspan="12">
+          <lw-button event="removeItem" targetSubDatasetName="appdata" title="删除行" />
+        </lw-wrapper>
+      </lw-row>
+      <lw-raw-item-list name="appdata" titleCode="model.user_appdata" subDatasetName="appdata" multiple="true" height="300">
+        <lw-list-label name="key" title="键" titleCode="model.user_appdata.key" width="200px" />
+        <lw-list-label name="value" title="值" titleCode="model.user_appdata.value" width="200px" />
+        <lw-list-label name="name" title="名称" titleCode="model.user_appdata.name" width="200px" />
+      </lw-raw-item-list>
+    </lw-wrapper>
+
+    <lw-wrapper title="功能权限">
+      <lw-row style="margin-bottom: 6px">
+        <lw-wrapper colspan="12">
+          <lw-button event="addItem" targetSubDatasetName="permission" title="添加行" />
+          <lw-button event="removeItem" targetSubDatasetName="permission" title="删除行" />
+        </lw-wrapper>
+      </lw-row>
+      <lw-raw-item-list name="permission" subDatasetName="permission" multiple="true" height="300">
+        <lw-list-auto name="perm__description" width="300px" title="名称" titleCode="model.permission.description" valueField="description"
+          api="permission/auto" suggestionWidth="300px" autoCopy="false">
+          <attribute name="matchFields" value="description,code"></attribute>
+          <attribute name="copyFrom" value="code,description"></attribute>
+          <attribute name="copyTo" value="permission,perm__description"></attribute>
+        </lw-list-auto>
+        <lw-list-text name="permission" width="300px" title="代码" titleCode="model.permission.code" required="true" enabledJs="false" />
+      </lw-raw-item-list>
+    </lw-wrapper>
+  </lw-tabs>
+
+</layout>

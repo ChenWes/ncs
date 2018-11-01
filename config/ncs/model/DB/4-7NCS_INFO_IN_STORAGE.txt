@@ -1,0 +1,139 @@
+-- Create table
+create table NCS_INFO_IN_STORAGE
+(
+  id                      NUMBER(9) not null,
+  transport_bill_code     VARCHAR2(50) not null,
+  transport_bill_code_3pl VARCHAR2(100),
+  car_no                  VARCHAR2(50),
+  driver_code             VARCHAR2(20),
+  driver_name             VARCHAR2(20),
+  in_storage_time         VARCHAR2(30),
+  storage_code            VARCHAR2(20),
+  car_abnormity_list      VARCHAR2(200),
+  delivery_bill_list      VARCHAR2(200),
+  scaner                  VARCHAR2(50),
+  insert_user             VARCHAR2(128),
+  update_user             VARCHAR2(128),
+  insert_date             TIMESTAMP(6),
+  update_date             TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table 
+comment on table NCS_INFO_IN_STORAGE
+  is '入库实绩发送接口';
+-- Add comments to the columns 
+comment on column NCS_INFO_IN_STORAGE.id
+  is 'ID';
+comment on column NCS_INFO_IN_STORAGE.transport_bill_code
+  is '运单号';
+comment on column NCS_INFO_IN_STORAGE.transport_bill_code_3pl
+  is '运单号（物流商）  string  3PL自有系统配车方案时提供，否则为空';
+comment on column NCS_INFO_IN_STORAGE.car_no
+  is '车牌号';
+comment on column NCS_INFO_IN_STORAGE.driver_code
+  is '司机编码';
+comment on column NCS_INFO_IN_STORAGE.driver_name
+  is '司机姓名';
+comment on column NCS_INFO_IN_STORAGE.in_storage_time
+  is '入库时间  string  yyyy-MM-dd hh:mm:ss格式，入库扫描结束时间';
+comment on column NCS_INFO_IN_STORAGE.storage_code
+  is '仓库编码';
+comment on column NCS_INFO_IN_STORAGE.car_abnormity_list
+  is '车辆异常信息编码  List<string>';
+comment on column NCS_INFO_IN_STORAGE.delivery_bill_list
+  is '入库交货单编码 List<string> ';
+comment on column NCS_INFO_IN_STORAGE.scaner
+  is '扫描人编码';
+comment on column NCS_INFO_IN_STORAGE.insert_user
+  is '插入人';
+comment on column NCS_INFO_IN_STORAGE.update_user
+  is '更新人';
+comment on column NCS_INFO_IN_STORAGE.insert_date
+  is '插入时间';
+comment on column NCS_INFO_IN_STORAGE.update_date
+  is '更新时间';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table NCS_INFO_IN_STORAGE
+  add constraint PK_NCS_INFO_IN_STORAGE primary key (ID)
+  using index 
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+
+
+
+-- Create table
+create table NCS_INFO_IN_STORAGE_DETAILS
+(
+  id                     NUMBER(9) not null,
+  ncs_info_in_storage_id NUMBER(9) not null,
+  tray_code              VARCHAR2(50),
+  scan_time              VARCHAR2(50),
+  tray_abnormity_list    VARCHAR2(200),
+  insert_user            VARCHAR2(128),
+  update_user            VARCHAR2(128),
+  insert_date            TIMESTAMP(6),
+  update_date            TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table 
+comment on table NCS_INFO_IN_STORAGE_DETAILS
+  is '入库实绩发送明细数据';
+-- Add comments to the columns 
+comment on column NCS_INFO_IN_STORAGE_DETAILS.id
+  is 'ID';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.ncs_info_in_storage_id
+  is '入库实绩发送头ID';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.tray_code
+  is '托盘编码';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.scan_time
+  is '扫描时间';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.tray_abnormity_list
+  is '托盘异常信息编码';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.insert_user
+  is '插入人';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.update_user
+  is '更新人';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.insert_date
+  is '插入时间';
+comment on column NCS_INFO_IN_STORAGE_DETAILS.update_date
+  is '更新时间';
+-- Create/Recreate primary, unique and foreign key constraints 
+alter table NCS_INFO_IN_STORAGE_DETAILS
+  add constraint PK_NCS_INFO_IN_STORAGE_DETAILS primary key (ID)
+  using index 
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+
+
+-- Create sequence 
+create sequence NCS_INFO_IN_STORAGE_SEQ
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+
+-- Create sequence 
+create sequence NCS_INFO_IN_STORAGE_D_SEQ
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;
+
+
+
+

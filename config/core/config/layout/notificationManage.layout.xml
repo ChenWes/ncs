@@ -1,0 +1,56 @@
+<layout name="notificationManager" title="通知管理" use="lw-search-page-layout">
+  <layout name="notificationQuerySearch" title="通知查询" use="lw-inner-search" query="notification_readersQuery" keyFields="notification__title,notification__content,notification__biz_type" colspan="18">
+    <toolbar use="lw-search-form" keyPlaceholder="" showForm="true" searchOnLoad="true"></toolbar>
+    <list use="lw-list" index="true" editColumn="false" height="450" multiple="false" viewColumn="true">
+      <attribute name="dynamicAttrs" value="is_read"/>
+      <attribute name="dynamicAntiAttrs" value="is_read"/>
+      <field name="is_read" title="未读" titleCode="model.is_read" use="lw-list-free" width="40">
+        <attribute name="tmpl" value="&lt;i class=&quot;fa fa-circle ntf-priority lv-3 ${ $.is_read ? &quot;hidden&quot; : &quot;&quot; }&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;" />
+      </field>
+      <field name="notification__priority" title="等级" titleCode="model.notification.priority" use="lw-list-free" width="40">
+        <attribute name="tmpl" value="&lt;i class=&quot;fa fa-exclamation-triangle ntf-priority lv-${ $.notification__priority } ${ $.notification__priority == 1 ? &quot;hidden&quot; : &quot;&quot;} &quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;" />
+      </field>
+      <field name="notification__title" title="标题" titleCode="model.notification.title" use="lw-list-label" />
+      <field name="notification__content" title="内容" titleCode="model.notification.content" use="lw-list-label" />
+      <field name="notification__type_label" title="类型" titleCode="model.notification.type_label" use="lw-list-label" width="40" />
+      <field name="notification__status_label" title="状态" titleCode="model.notification.status_label" use="lw-list-label" width="60" />
+      <field name="notification__insert_user" title="创建人" titleCode="model.notification.insert_user" use="lw-list-label" />
+      <field name="notification__insert_date" title="创建时间" titleCode="model.notification.insert_date" use="lw-list-label" width="150" type="datetime" />
+      <field name="notification__related_link" title="外部链接" linkTitle="点击跳转" titleCode="model.notification.related_link" use="lw-list-link" target="_blank" >
+        <attribute name="url" value="http://${ $.notification__related_link }" />
+      </field>
+      <field name="notification__related_path" title="内部页面跳转" linkTitle="点击跳转" titleCode="model.notification.related_path" use="lw-list-link" target="_blank" >
+        <attribute name="url" value="${ $.notification__related_path }" />
+        <attribute name="inner_route" value="1" />
+      </field>
+    </list>
+    <paging use="lw-paging" />
+  </layout>
+
+  <layout name="notificationQueryPage" use="lw-inner-page" title="通知详情" query="notification_readersQuery" colspan="6" afterSaveEvent="notificationQuerySearch.refresh">
+    <form use="lw-form">
+      <field name="notification__title" title="标题" titleCode="model.notification.title" use="lw-text" colspan="24" />
+      <field name="notification__content" title="内容" titleCode="model.notification.content" use="lw-textarea" colspan="24">
+        <attribute name="autosize" value="{&quot;minRows&quot;:&quot;10&quot;}" />
+      </field>
+      <field name="notification__type" title="类型" titleCode="model.notification.type" use="lw-select" category="notification_type" colspan="24" />
+      <field name="notification__insert_date" title="创建日期" titleCode="model.notification.insert_date" use="lw-date" colspan="24" type="datetime" />
+      <field name="notification__priority" title="告警等级" titleCode="model.notification.priority" use="lw-free" colspan="24">
+        <attribute name="tmpl" value="&lt;i class=&quot;fa fa-exclamation-triangle ntf-priority lv-${ $ } ${ $==1 ? &quot;hidden&quot; : &quot;&quot;}&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt; ${ aux.priorityNames[&quot;lv_&quot;+$] }" />
+        <attribute name="auxData" value="{ &quot;priorityNames&quot;:{&quot;lv_1&quot;: &quot;普通&quot;,&quot;lv_2&quot;:&quot;紧急&quot;,&quot;lv_3&quot;:&quot;特急&quot;}}" />
+      </field>
+      <field name="notification__status" title="状态" titleCode="model.notification.status" use="lw-select" category="notification_status" colspan="24" />
+      <field name="notification__related_link" title="外部链接" titleCode="model.notification.related_link" use="lw-free" colspan="24">
+        <attribute name="tmpl" value="&lt;a href=&quot;http://${ $ }&quot; target=&quot;_blank&quot;&gt;${ $ }&lt;/&gt;" />
+        <attribute name="url" value="${ $ }" />
+        <attribute name="inner_txt" value="点击跳转" />
+      </field>
+      <field name="notification__related_path" title="内部页面跳转" titleCode="model.notification.related_path" use="lw-free" colspan="24">
+        <attribute name="tmpl" value="&lt;a href=&quot;#/${ $ }&quot; target=&quot;_blank&quot;;&gt;${ $ }&lt;/&gt;" />
+        <attribute name="url" value="${ $ }" />
+        <attribute name="inner_txt" value="点击跳转" />
+        <attribute name="inner_route" value="1" />
+      </field>
+    </form>
+  </layout>
+</layout>

@@ -1,0 +1,38 @@
+
+{
+  "MSG_HEADER":{
+    "TYPE_CODE": "ORDER_DELETED_NOTICE",
+"ID_CODE": "R302_INTERFACE",
+    "VERSION": "1.0"
+},
+"MSG_BODY":
+{
+    "CONTENT": [
+    {    "DELETED_ORDER_LIST": [
+            {
+                "ISSUE_CODE": "Z590122",
+                "SUPPLIER_CODE": "A156",
+                "SEND_PLACE_CODE": "A1",
+                "NEED_GOODS_CODE": "R",
+                "NEED_PLACE_CODE": "N10",
+                "PART_CODE": "304014344R",
+                "ARRI_PLAN_DATE": "2017-05-16 16:10",
+                "WORK_ORDER_NO": "SL",
+                "ORDER_QTY": 32,
+                "SNP": 8,
+                "DELETE_TIME": "2017-05-16 16:10:10",
+                "DELETE_EMP": "SYS",
+                "DELETED_TRAY_LIST": [
+                    "RC178A1170515F0032",
+                    "RC178A1170515F0039",
+                    "RC178A1170515F0035"
+                ]
+            }
+        ]
+      }
+    ],
+    "LENGTH": 66,
+    "TIMESTAMP": "20170216101240",
+    "SIGN": "74BDA18177860DDA83D80364681CF9DE"
+}
+}

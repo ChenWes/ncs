@@ -1,0 +1,26 @@
+<layout name="taskMonitorSearch" title="异步任务监控" use="lw-search-layout" pageLayout="taskMonitorPage" query="task_monitor" keyFields="status,description,task_handler,task_user,server_name,exception">
+
+  <toolbar use="lw-search-form" keyPlaceholder="">
+  </toolbar>
+
+  <list use="lw-list" index="true" editColumn="false" height="450" multiple="false" viewColumn="false">
+    <field name="task_handler" title="任务处理器" use="lw-list-label" />
+    <field name="task_user" title="任务用户" use="lw-list-label" />
+    <field name="schedule_code" title="任务计划编号" use="lw-list-label" />
+    <field name="server_name" title="执行任务应用服务器识别名称" use="lw-list-label" width="150"/>
+    <field name="status_label" title="状态" use="lw-list-label" />
+    <field name="description" title="描述" use="lw-list-label" />
+    <field name="launch_time" title="发布时间" use="lw-list-label" type="datetime" width="150"/>
+    <field name="start_time" title="开始执行时间" use="lw-list-label" type="datetime" width="150"/>
+    <field name="finish_time" title="结束执行时间" use="lw-list-label" type="datetime" width="150"/>
+    <field name="exception" title="执行异常信息" use="lw-list-label" />
+    <field name="crash_time" title="宕机中止时间" use="lw-list-label" type="datetime" width="150"/>
+    <field name="log" title="执行日志" use="lw-list-label" />
+    <field name="insert_user" title="Insert User" titleCode="model.insert_user" use="lw-list-label" />
+    <field name="insert_date" title="Insert Time" titleCode="model.insert_date" use="lw-list-label" width="150" type="datetime" />
+    <field name="update_user" title="Update User" titleCode="model.update_user" use="lw-list-label" />
+    <field name="update_date" title="Update Time" titleCode="model.update_date" use="lw-list-label" width="150" type="datetime" />
+  </list>
+
+  <paging use="lw-paging" />
+</layout>

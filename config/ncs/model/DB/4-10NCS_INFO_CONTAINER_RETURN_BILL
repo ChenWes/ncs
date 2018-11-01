@@ -1,0 +1,69 @@
+-- Create table
+create table NCS_INFO_CONTAINER_RETURN_BILL
+(
+  id                    NUMBER(9) not null,
+  return_box_bill_code  VARCHAR2(30),
+  car_no                VARCHAR2(50),
+  driver_code           VARCHAR2(20),
+  driver_name           VARCHAR2(20),
+  return_type           NUMBER(20),
+  has_auxiliary         NUMBER(20),
+  storage_type          NUMBER(20),
+  storage_code          VARCHAR2(50),
+  scaner                VARCHAR2(50) not null,
+  issue_emp             VARCHAR2(20),
+  issue_time            VARCHAR2(20),
+  container_detail_list VARCHAR2(200),
+  insert_user           VARCHAR2(128),
+  update_user           VARCHAR2(128),
+  insert_date           TIMESTAMP(6),
+  update_date           TIMESTAMP(6)
+)
+tablespace DATA
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the table
+comment on table NCS_INFO_CONTAINER_RETURN_BILL
+  is '空容器返空单信息发送接口';
+-- Add comments to the columns
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.return_box_bill_code
+  is '返空单号';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.car_no
+  is '车牌号';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.driver_code
+  is '司机编码';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.driver_name
+  is '司机姓名';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.return_type
+  is '返空方式，0：直接返空；1：经集配返空';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.has_auxiliary
+  is '有无辅材';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.storage_type
+  is '仓库类型；0：工厂仓库、1：集配库';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.storage_code
+  is '仓库编码：工厂仓库：工厂编码 + 0；集配库：集配库编码';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.scaner
+  is '扫描制单人';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.issue_emp
+  is '发行人';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.issue_time
+  is '发行时间';
+comment on column NCS_INFO_CONTAINER_RETURN_BILL.container_detail_list
+  is '容器明细';
+-- Create/Recreate primary, unique and foreign key constraints
+alter table NCS_INFO_CONTAINER_RETURN_BILL
+  add constraint PK_RETURN_BILL_ID primary key (ID)
+  using index
+  tablespace DATA
+  pctfree 10
+  initrans 2
+  maxtrans 255;
+
+  -- Create sequence
+create sequence NCS_INFO_CONTAINER_R_BILL_SEQ
+minvalue 1
+maxvalue 9999999999999999999999999999
+start with 1
+increment by 1
+cache 20;

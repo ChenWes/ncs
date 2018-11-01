@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified"> 
+<xs:include schemaLocation="simple-fields.xsd"></xs:include>
+<xs:include schemaLocation="item.xsd"></xs:include>
+<xs:element name="query" type="query"/>
+
+<xs:complexType name="query">
+	<xs:complexContent>
+		<xs:extension base="simple-fields"><!-- query标签 下可以有string，integer等标签 -->
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element name="join" type="join"></xs:element>
+				<xs:element name="item" type="item"></xs:element>
+				<xs:element name="extend" type="extend"></xs:element>
+				<xs:element name="formulaField" type="formulaField"></xs:element>
+			</xs:choice>
+			<!-- 定义query标签的属性 -->
+			<xs:attributeGroup ref="abstractQuery"></xs:attributeGroup>
+			<xs:attribute name="id" type="xs:string"/>
+			<xs:attribute name="actionProvider" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="eventProvider" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="verboseName" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="valueField" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="template" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="matchFields" type="xs:string">
+				<xs:annotation>
+					<xs:documentation></xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+
+</xs:schema>

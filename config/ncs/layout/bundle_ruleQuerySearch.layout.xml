@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout name="bundle_ruleQuerySearch" title="拼车数据表" use="lw-search-layout" pageLayout="bundle_ruleQueryPage" query="bundle_ruleQuery" keyFields="id">
+  <toolbar use="lw-search-form" excludeFields="mileage,schedule_space,verify_user1,verify_time1,verify_user2,verify_time2,insert_user,insert_date,update_user,update_date" keyPlaceholder="">
+    <button title="新增" titleCode="layout.new" event="new" use="lw-button" permission=""/>
+    <button title="删除" titleCode="layout.delete" event="action" action="delete" use="lw-button" actionTarget="selected" permission=""/>
+  </toolbar>
+    <list use="lw-list" index="true" editColumn="true" height="450" multiple="true" viewColumn="true">
+      <field name="id" title="编号" titleCode="model.repetition_schedule.code" use="lw-list-label"/>
+      <field name="code" title="规则编码" titleCode="model.repetition_schedule.type" use="lw-list-label"/>
+      <field name="name" title="规则名称" titleCode="model.repetition_schedule.attribute" use="lw-list-label"/>
+      <field name="is_ns" title="发点到点可拼" titleCode="model.repetition_schedule.is_auto_create" use="lw-list-checkbox" colspan="6"/>
+      <field name="is_car_type" title="不同车型不可拼车" titleCode="model.repetition_schedule.is_important" use="lw-list-checkbox" colspan="6"/>
+        <field name="is_different_car_type" title="不同车型可拼车" titleCode="model.repetition_schedule.is_important" use="lw-list-checkbox" colspan="6"/>
+      <field name="is_split" title="是否可拆分" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+      <field name="time_priority" title="纳时优先" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+        <field name="attribute1" title="托盘铁架不可拼" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+        <field name="attribute2" title="跨纳时补余高" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+          <field name="attribute3" title="白晚班可拼" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+            <field name="attribute4" title="车长" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+              <field name="attribute5" title="实际车高" titleCode="model.repetition_schedule.status" use="lw-list-checkbox"/>
+      <field name="special_rules" title="特殊规则" titleCode="model.repetition_schedule.owner_qf" use="lw-list-label"/>
+      <field name="suppliers_codes" title="相关供应商编码" titleCode="model.repetition_schedule.name" use="lw-list-label"/>
+      <field name="suppliers_names" title="相关供应商名称" titleCode="model.location.name" use="lw-list-label" width="120"/>
+      <field name="rmk" title="备注" titleCode="model.repetition_schedule.mileage" use="lw-list-label"/>
+
+      <field name="insert_user" title="Insert User" titleCode="model.insert_user" use="lw-list-label"/>
+      <field name="insert_date" title="Insert Time" titleCode="model.insert_date" use="lw-list-label" width="150" type="datetime"/>
+      <field name="update_user" title="Update User" titleCode="model.update_user" use="lw-list-label"/>
+      <field name="update_date" title="Update Time" titleCode="model.update_date" use="lw-list-label" width="150" type="datetime"/>
+    </list>
+    <paging use="lw-paging"/>
+  </layout>

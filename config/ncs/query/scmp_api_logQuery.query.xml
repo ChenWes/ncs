@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns="http://logwire.com/schema/query" model="scmp_api_log" name="scmp_api_log_Query" verboseName="接口数据表"/>

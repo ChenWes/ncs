@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+<xs:include schemaLocation="abstract-query.xsd"></xs:include>
+<xs:include schemaLocation="relation.xsd"></xs:include>
+<xs:complexType name="item">
+	<!-- item下可以有join子标签  -->
+	<xs:choice maxOccurs="unbounded" minOccurs="0">
+		<xs:element name="moreRelationKey" type="relationKey" maxOccurs="unbounded" minOccurs="0"></xs:element>
+		<xs:element name="join" type="join"></xs:element>
+	</xs:choice>
+	<!-- 定义item标签的属性 -->
+	<xs:attributeGroup ref="abstractQuery">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attributeGroup>
+	<xs:attribute name="relation" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>引用其他relation的name</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="localKey" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>relation为空时，为当前表的字段名称，否则为relation所引用的表的字段名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="referKey" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>引用的表的字段名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:complexType>
+</xs:schema>

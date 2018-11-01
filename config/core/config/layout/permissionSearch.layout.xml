@@ -1,0 +1,18 @@
+<layout name="permissionSearch" title="权限管理" use="lw-search-layout" pageLayout="permissionPage" query="permission" keyFields="code">
+
+  <toolbar use="lw-search-form" keyPlaceholder="">
+    <button title="新增" event="new" use="lw-button" permission="/api/permission/new" />
+    <button title="删除" event="action" action="delete" use="lw-button" permission="query/permission/action/delete" afterActionEvents="permissionSearch.refresh" />
+  </toolbar>
+
+  <list use="lw-list" index="true" editColumn="true" height="450" multiple="true" viewColumn="false">
+    <field name="code" title="代码" use="lw-list-label" />
+    <field name="description" title="说明" use="lw-list-label" />
+    <field name="insert_user" title="Insert User" titleCode="model.insert_user" use="lw-list-label" />
+    <field name="insert_date" title="Insert Time" titleCode="model.insert_date" use="lw-list-label" width="150" type="datetime" />
+    <field name="update_user" title="Update User" titleCode="model.update_user" use="lw-list-label" />
+    <field name="update_date" title="Update Time" titleCode="model.update_date" use="lw-list-label" width="150" type="datetime" />
+  </list>
+
+  <paging use="lw-paging" />
+</layout>

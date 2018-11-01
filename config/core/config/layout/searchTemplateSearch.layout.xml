@@ -1,0 +1,19 @@
+<layout name="searchTemplateSearch" title="查询视图" use="lw-search-layout" pageLayout="searchTemplatePage" query="search_template" keyFields="layout_name">
+
+  <toolbar use="lw-search-form" keyPlaceholder="">
+    <button title="删除" titleCode="layout.delete" event="action" action="delete" use="lw-button" permission="query/search_template/action/delete" afterActionEvents="searchTemplateSearch.refresh" />
+  </toolbar>
+
+  <list use="lw-list" index="true" editColumn="true" height="450" multiple="true" viewColumn="false">
+    <field name="layout_name" title="查询界面" use="lw-list-label" width="200" />
+    <field name="title" title="视图标题" use="lw-list-label" width="200" />
+    <field name="locked" title="锁定" use="lw-list-checkbox" />
+    <field name="selected" title="默认视图" use="lw-list-checkbox" />
+    <field name="sort_order" title="排序" use="lw-list-label" />
+    <field name="domain_name" title="域" use="lw-list-label" />
+    <field name="role_gid" title="角色" use="lw-list-label" />
+    <field name="user_gid" title="用户" use="lw-list-label" />
+  </list>
+
+  <paging use="lw-paging" />
+</layout>

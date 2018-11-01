@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+           verboseName="翻译"
+           includeVersionField="true"
+           includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+        <string name="translation_key" verboseName="翻译KEY" length="200" primaryKey="true">
+            <helpText>界面控件、资源定位关键字</helpText>
+        </string>
+    </fields>
+</model>

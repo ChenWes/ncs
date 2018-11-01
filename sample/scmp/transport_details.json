@@ -1,0 +1,49 @@
+{
+  "MSG_HEADER": {
+    "TYPE_CODE": "TRANSPORT_DETAILS",
+    "ID_CODE": "R302_INTERFACE",
+    "VERSION": "1.0"
+  },
+  "MSG_BODY": {
+
+    "CONTENT": [{
+        "TRANSPORT_BILL_CODE": "TCP170329R401C20013",
+        "TRANSPORT_BILL_CODE_3PL": "BS170512-1136",
+        "CAR_NO": "鄂FJQ756",
+        "DRIVER_CODE": "",
+        "DRIVER_NAME": "",
+        "SCAN_TIME": "2017-05-15 11:58:30",
+        "SUPPLIER_CODE": "A107",
+        "SEND_PLACE_CODE": "A1",
+        "TRAY_CODE_LIST": [
+          "CA107A1170522F0009",
+          "CA107A1170522F0001"
+        ],
+        "DELIVERY_BILL_LIST": [
+          "CTL0A107A154181"
+        ]
+      },
+      {
+        "TRANSPORT_BILL_CODE": "TCP170512R401C20563",
+        "TRANSPORT_BILL_CODE_3PL": "BS170512-0218",
+        "CAR_NO": "鄂FE5040",
+        "DRIVER_CODE": "",
+        "DRIVER_NAME": "",
+        "SCAN_TIME": "2017-05-15 11:56:41",
+        "SUPPLIER_CODE": "A045",
+        "SEND_PLACE_CODE": "A1",
+        "TRAY_CODE_LIST": [
+          "RA045A1170525F0002",
+          "RA045A1170524F0002"
+        ],
+        "DELIVERY_BILL_LIST": [
+          "RX20A045A15Q1G1",
+          "RX40A045A15P1N1"
+        ]
+      }
+    ],
+    "LENGTH": 66,
+    "TIMESTAMP": "20170216101240",
+    "SIGN": "74BDA18177860DDA83D80364681CF9DE"
+  }
+}

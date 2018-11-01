@@ -1,0 +1,282 @@
+<Transmission>
+	<TransmissionHeader>
+		<UserName>NCS.INTEGRATION_SCMP</UserName>
+		<Password Type="#PasswordDigest">SiymIPzkKmk1cyGDywLaiW9zBIix4bckgtcv3eAQKkI=</Password>
+	</TransmissionHeader>
+	<TransmissionBody>
+		<GLogXMLElement>
+			<TransactionHeader/>
+			<Release>
+				<ReleaseGid>
+					<Gid>
+						<DomainName>NCS</DomainName>
+						<Xid>{$:order.order_release_gid}</Xid>     <!-- OR_GID 这是OTM订单GID 需要系统生成 或者调用OTM的ID 规则 -->
+					</Gid>
+				</ReleaseGid>
+				<TransactionCode>I</TransactionCode>
+				<ReleaseHeader>
+					<ReleaseName>{$:order.APPLY_CODE}</ReleaseName>   <!-- APPLY_CODE  申请单号  -->
+					<ReleaseMethodGid>
+						<Gid>
+							<DomainName>NCS</DomainName>
+							<Xid>SHIP_UNIT</Xid>
+						</Gid>
+					</ReleaseMethodGid>
+                    <TimeWindowEmphasisGid>
+						<Gid>
+							<Xid>PAST</Xid>
+						</Gid>
+					</TimeWindowEmphasisGid>
+					<FlexFieldStrings>
+					    <Attribute1></Attribute1>
+						<Attribute6>{$:order.ISSUE_CODE}</Attribute6>    <!-- BOX_DETAILS.ISSUE_CODE  发行号，第三层 BOX_DETAILS 中的数据  -->
+						<Attribute10></Attribute10>
+						<Attribute11></Attribute11>
+						<Attribute12>正常订单</Attribute12>
+						<Attribute13>{$:order.SUPPLIER_CODE}</Attribute13>   <!-- SUPPLIER_CODE   供应商编码 -->
+						<Attribute14>{$:order.SUPPLIER_NAME}</Attribute14>    <!-- 供应商名称  通过 SELECT corporation_name FROM   corporation where corporation_gid  =  'SUPPLIER_CODE' -->
+						<Attribute17/>
+						<Attribute18>{$:order.NEED_GOODS_CODE}</Attribute18>    <!-- NEED_GOODS_CODE   要货方编码 -->
+						<Attribute19>{$:order.ATTRIBUTE19}</Attribute19>              <!-- 根据 SELECT DECODE(ZONE2,'郑州','C2','C1') FROM LOCATION WHERE LOCATION_XID =  '发货地编码 SEND_PLACE_CODE对应的LOCAITON_XID 见 LocationRef' -->
+						<Attribute20>{$:order.SEND_PLACE_CODE - ZONE2}</Attribute20>  <!-- 根据 SELECT ZONE2 FROM LOCATION WHERE LOCATION_XID =  '发货地编码 SEND_PLACE_CODE SEND_PLACE_CODE对应的LOCAITON_XID 见 LocationRef' -->
+					</FlexFieldStrings>
+					<FlexFieldNumbers>
+						<AttributeNumber1/>
+						<AttributeNumber4/>
+					</FlexFieldNumbers>
+					<FlexFieldDates>
+						<AttributeDate1>
+							<GLogDate>{$:order.EXPECT_TIME format="yyyyMMddHHmmss"}</GLogDate>  <!-- EXPECT_TIME 期望取货时间， 格式 yyyyMMddHHmmss 这里要注意，客户时间是29小时制超过24小时需要转换，如 20170510290000 需要转换成 20170509050000  -->
+							<TZId>Asia/Shanghai</TZId>
+							<TZOffset>+08:00</TZOffset>
+						</AttributeDate1>
+					</FlexFieldDates>
+				</ReleaseHeader>
+				<ShipFromLocationRef>
+					<LocationRef>
+						<LocationGid>
+							<Gid>
+								<DomainName>NCS</DomainName>
+								<Xid>{$:order.SEND_PLACE_CODE - XID}</Xid>  <!-- 需要转换OTM的ID , SELECT LOCATION_GID FROM LOCATION_REFNUM WHERE LOCATION_REFNUM_QUAL_GID = 'NCS.出货地代码-DFL' AND LOCATION_REFNUM_VALUE = 'SUPPLIER_CODE' || '-' || 'SEND_PLACE_CODE'-->  
+							</Gid>
+						</LocationGid>
+					</LocationRef>
+				</ShipFromLocationRef>
+				<ShipToLocationRef>
+					<LocationRef>
+						<LocationGid>
+							<Gid>
+								<DomainName>NCS</DomainName>
+								<Xid>{$:order.NEED_PLACE_CODE}</Xid>  <!-- NEED_PLACE_CODE   要货地点编码 -->
+							</Gid>
+						</LocationGid>
+					</LocationRef>
+				</ShipToLocationRef>
+				<TimeWindow>
+					<LateDeliveryDt>
+						<GLogDate>{$:order.TRAY_ARRI_PLAN_DATE  format="yyyyMMddHHmmss"}</GLogDate> <!-- TRAY_DETAILS.TRAY_ARRI_PLAN_DATE 托盘纳期， 格式 yyyyMMddHHmmss 这里要注意，客户时间是29小时制超过24小时需要转换，如 20170510290000 需要转换成 20170509050000  -->
+						<TZId>Asia/Shanghai</TZId>
+						<TZOffset>+08:00</TZOffset>
+					</LateDeliveryDt>
+				</TimeWindow>
+				<ReleaseTypeGid>
+					<Gid>
+						<DomainName>NCS</DomainName>
+						<Xid>部品</Xid>
+					</Gid>
+				</ReleaseTypeGid>
+				<ReleaseLine>      <!-- 货品明细 (BOX_DETAILS )开始循环，这里一个订单只取一个 BOX_DETAILS 货品明细即可因此编号也是固定单 -->
+					<ReleaseLineGid>
+						<Gid>
+							<DomainName>NCS</DomainName>
+							<Xid>{$:order.ID}-001</Xid>       <!-- 这是OTM订单GID || '-001' -->
+						</Gid>
+					</ReleaseLineGid>
+					<PackagedItemRef>
+						<PackagedItem>
+							<Packaging>
+								<PackagedItemGid>
+									<Gid>
+									    <DomainName>NCS</DomainName>
+										<Xid>{$:detail.PART_CODE}</Xid>      <!-- 货品编码  BOX_DETAILS.PART_CODE -->
+									</Gid>
+								</PackagedItemGid>
+							</Packaging>
+							<Item>
+								<TransactionCode>NP</TransactionCode>
+								<ItemGid>
+									<Gid>
+										<Xid>DEFAULT</Xid>
+									</Gid>
+								</ItemGid>
+							</Item>
+						</PackagedItem>
+					</PackagedItemRef>
+					<ItemQuantity>
+						<WeightVolume>
+							<Weight>
+								<WeightValue>0.0</WeightValue>
+								<WeightUOMGid>
+									<Gid>
+										<Xid>LB</Xid>
+									</Gid>
+								</WeightUOMGid>
+							</Weight>
+							<Volume>
+								<VolumeValue>0.0</VolumeValue>
+								<VolumeUOMGid>
+									<Gid>
+										<Xid>CUFT</Xid>
+									</Gid>
+								</VolumeUOMGid>
+							</Volume>
+						</WeightVolume>
+						<PackagedItemCount>1</PackagedItemCount>
+					</ItemQuantity>
+					<PackagedItemSpecCount>0</PackagedItemSpecCount>
+					<FlexFieldStrings>
+						<Attribute1>{$:order.ORDER_RELEASE_NAME}</Attribute1>  <!-- APPLY_CODE  申请单号  -->
+						<Attribute2/>
+						<Attribute3> </Attribute3>                                <!-- BOX_DETAILS.PACK_LABEL_CODE  包装标签编码，第三层 BOX_DETAILS 中的数据  -->  
+						<Attribute4></Attribute4>                             <!-- BOX_DETAILS.PART_NAME  零件名称，第三层 BOX_DETAILS 中的数据  -->  
+						<Attribute5>{$:detail.ISSUE_CODE}</Attribute5>            <!-- BOX_DETAILS.ISSUE_CODE  发行号，第三层 BOX_DETAILS 中的数据  --> 
+						<Attribute6>{$:detail.WORK_ORDER_NO}</Attribute6>  <!-- BOX_DETAILS.WORK_ORDER_NO  当工顺，第三层 BOX_DETAILS 中的数据  --> 
+						<Attribute7></Attribute7>                          <!-- 一个TRAY_DETAILS 对应多个 BOX_DETAILS， 将 BOX_DETAILS.ISSUE_CODE 用,号分割拼成字符串放入该字段。长度不超过149 -->
+					</FlexFieldStrings>
+					<FlexFieldNumbers/>
+					<FlexFieldDates>
+						<AttributeDate1>
+							<GLogDate>{$:TRAY_ARRI_PLAN_DATE -29 format="yyyyMMddHHmmss"}</GLogDate>  <!-- TRAY_DETAILS.TRAY_ARRI_PLAN_DATE 托盘纳期， 格式 yyyyMMddHHmmss 这里要注意，客户时间是29小时制超过24小时需要转换，如 20170510290000 需要转换成 20170509050000  -->
+							<TZId>Asia/Shanghai</TZId>
+							<TZOffset>+08:00</TZOffset>
+						</AttributeDate1>
+					</FlexFieldDates>
+				</ReleaseLine>
+			    <ShipUnit>           <!-- 托盘明细 (TRAY_DETAILS )开始循环，每个TRAY_DETAILS 一行 -->
+						<ShipUnitGid>
+							<Gid>
+								<DomainName>NCS</DomainName>
+								<Xid>{$:order.ID}-{$:NCS_or_line_INNER_NUM}</Xid>    <!-- OR_GID OTM订单GID + TRAY_DETAILS 的行号 -->
+							</Gid>
+						</ShipUnitGid>
+						<TransactionCode>I</TransactionCode>
+						<TransportHandlingUnitRef>
+							<ShipUnitSpecRef>
+								<ShipUnitSpecGid>
+									<Gid>
+										<DomainName>NCS</DomainName>
+										<Xid>{$:detail.TRAY_TYPE_CODE}</Xid>   <!-- 托盘类型 TRAY_DETAILS.TRAY_TYPE_CODE  如果是'F' 返回 '托盘' 如果是'T' 返回 '铁架'  -->
+									</Gid>
+								</ShipUnitSpecGid>
+							</ShipUnitSpecRef>
+						</TransportHandlingUnitRef>
+						<WeightVolume>
+							<Weight>
+								<WeightValue>{$:detail.TRAY_WEIGHT}</WeightValue>   <!-- 托重 TRAY_DETAILS.TRAY_WEIGHT -->
+								<WeightUOMGid>
+									<Gid>
+										<Xid>KG</Xid>
+									</Gid>
+								</WeightUOMGid>
+							</Weight>
+							<Volume>
+								<VolumeValue>{$:detail.Volume}</VolumeValue>   <!-- 体积 TRAY_DETAILS.TRAY_LENGTH * TRAY_DETAILS.TRAY_WIDTH * TRAY_DETAILS.TRAY_HEIGHT -->
+								<VolumeUOMGid>
+									<Gid>
+										<Xid>CUMTR</Xid>
+									</Gid>
+								</VolumeUOMGid>
+							</Volume>
+						</WeightVolume>
+						<ShipUnitContent>
+							<PackagedItemRef>
+								<PackagedItem>
+									<Packaging>
+										<PackagedItemGid>
+									       <Gid>
+									            <DomainName>NCS</DomainName>
+									         	<Xid>{$:detail.PART_CODE}</Xid>      <!-- 货品编码  BOX_DETAILS.PART_CODE -->
+									      </Gid>
+								</PackagedItemGid>
+									</Packaging>
+									<Item>
+										<TransactionCode>NP</TransactionCode>
+										<ItemGid>
+											<Gid>
+												<Xid>DEFAULT</Xid>
+											</Gid>
+										</ItemGid>
+									</Item>
+								</PackagedItem>
+							</PackagedItemRef>
+							<LineNumber>1</LineNumber>
+							<ItemQuantity>
+								<IsSplitAllowed>N</IsSplitAllowed>
+								<PackagedItemCount>1</PackagedItemCount>
+							</ItemQuantity>
+							<PackagedItemSpecCount>0</PackagedItemSpecCount>
+							<ReleaseGid>
+								<Gid>
+									<DomainName>NCS</DomainName>
+									<Xid>{$:order.ID}</Xid>         <!-- OR_GID 这是OTM订单GID 需要系统生成 或者调用OTM的ID 规则 -->
+								</Gid>
+							</ReleaseGid>
+							<ReleaseLineGid>
+								<Gid>
+									<DomainName>NCS</DomainName>
+									<Xid>{$:order.ID}-001</Xid>      <!-- OR_GID || '-001' -->
+								</Gid>
+							</ReleaseLineGid>
+						</ShipUnitContent>
+						<LengthWidthHeight>
+							<Length>
+								<LengthValue>{$:detail.TRAY_LENGTH}</LengthValue>   <!-- 托重 TRAY_DETAILS.TRAY_LENGTH -->
+								<LengthUOMGid>
+									<Gid>
+										<Xid>CM</Xid>
+									</Gid>
+								</LengthUOMGid>
+							</Length>
+							<Width>
+								<WidthValue>{$:detail.TRAY_WIDTH}</WidthValue>   <!-- 托宽 TRAY_DETAILS.TRAY_WIDTH -->
+								<WidthUOMGid>
+									<Gid>
+										<Xid>CM</Xid>
+									</Gid>
+								</WidthUOMGid>
+							</Width>
+							<Height>
+								<HeightValue>{$:detail.TRAY_HEIGHT}</HeightValue>   <!-- 托高 TRAY_DETAILS.TRAY_HEIGHT -->
+								<HeightUOMGid>
+									<Gid>
+										<Xid>CM</Xid>
+									</Gid>
+								</HeightUOMGid>
+							</Height>
+						</LengthWidthHeight>
+						<IsSplitAllowed>N</IsSplitAllowed>
+						<IsCountSplittable>Y</IsCountSplittable>
+						<ShipUnitCount>1</ShipUnitCount>
+						<TagInfo>
+							<ItemTag1>{$:detail.TRAY_CODE}</ItemTag1>      <!-- 托盘编码 TRAY_DETAILS.TRAY_CODE -->
+						</TagInfo>
+						<FlexFieldStrings>
+							<Attribute1>{$:order.ORDER_RELEASE_NAME}</Attribute1>   <!-- APPLY_CODE  申请单号  -->
+							<Attribute2>{$:order.PART_CODE}</Attribute2>         <!-- 货品编码 'NCS.' || BOX_DETAILS.PART_CODE -->
+							<Attribute3>{$:detail.TRAY_TYPE_CODE}</Attribute3>     <!-- 托盘类型 TRAY_DETAILS.TRAY_TYPE_CODE -->
+							<Attribute4/>     
+						</FlexFieldStrings>
+						<FlexFieldNumbers/>
+						<FlexFieldDates>
+							<AttributeDate1>
+								<vt:function var="format_DELIVERY" method="FormatHourOutDateTime" type="ODC.UI.UserFunctions" args="$#.order.LATE_DELIVERY_DATE" args="11" args="2" args="yyyy-MM-dd HH:mm"/>
+								<GLogDate>{$:TRAY_ARRI_PLAN_DATE -29  format="yyyyMMddHHmmss"}</GLogDate>   <!-- TRAY_DETAILS.TRAY_ARRI_PLAN_DATE 托盘纳期， 格式 yyyyMMddHHmmss 这里要注意，客户时间是29小时制超过24小时需要转换，如 20170510290000 需要转换成 20170509050000  -->
+								<TZId>Asia/Shanghai</TZId>
+								<TZOffset>+08:00</TZOffset>
+							</AttributeDate1>
+						</FlexFieldDates>
+					</ShipUnit>
+			</Release>
+		</GLogXMLElement>
+	</TransmissionBody>
+</Transmission>

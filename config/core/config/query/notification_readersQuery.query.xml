@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<query xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../t01/xsd/query.xsd"
+joinAsScalarSubquery="false" model="notification_readers" includeFields="notification_id,is_read,user_id" sql="user_id=${user}"
+name="notification_readersQuery" orderBy="insert_date" asc="false" verboseName="">
+	<join fetch="title,content,type,status,related_path,related_link,biz_type,priority,task_key,task_entity_id,insert_user,insert_date" name="notification" localKey="notification_id" model="notification" referKey="id"></join>
+</query>

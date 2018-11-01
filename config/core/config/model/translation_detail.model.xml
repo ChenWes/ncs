@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+           verboseName="翻译明细"
+           includeVersionField="true"
+           includeAuditFields="true">
+    <helpText></helpText>
+    <fields>
+        <auto name="translation_detail_id" verboseName="翻译明细ID"></auto>
+        <foreignKey name="translation_key" verboseName="翻译KEY" otherModel="translation"></foreignKey>
+        <string name="lang" verboseName="语言" length="50"></string>
+        <string name="country" verboseName="国家" length="50"></string>
+        <string name="variant" verboseName="Variant" length="50"></string>
+        <text name="text" verboseName="译文"></text>
+    </fields>
+    <indices>
+        <index unique="true">
+            <field>translation_key</field>
+            <field>lang</field>
+            <field>country</field>
+            <field>variant</field>
+        </index>
+    </indices>
+</model>

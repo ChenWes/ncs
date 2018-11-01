@@ -1,0 +1,19 @@
+<layout name="bulletinPage" title="公告管理" use="lw-page-layout" query="bulletinQuery" searchLayout="bulletinSearch">
+  <toolbar use="lw-toolbar">
+    <button title="新增" event="new" use="lw-button" permissioin="/api/bulletinQuery/new" />
+    <button title="保存" event="action" use="lw-button" enabledByStatus="new" action="saveBulletin"/>
+    <button title="删除" event="action" action="delete" use="lw-button" enabledByStatus="edit" permission="query/user/action/delete" afterActionEvents="bulletinPage.back" />
+    <button title="返回" event="back" use="lw-button" />
+  </toolbar>
+  
+  <form use="lw-form">
+    <field name="title" title="标题" use="lw-text" colspan="12" required="true" />
+    <field use="lw-empty" colspan="12" />
+    <field name="content" title="内容" use="lw-textarea" colspan="12" rows="6"/>
+    <field use="lw-empty" colspan="12" />
+    <field name="biz_type" title="业务类型" use="lw-select" category="notification_biz_type" colspan="12" />
+    <field use="lw-empty" colspan="12" />
+    <field name="priority" title="告警等级" use="lw-select" category="notification_priority" colspan="12" />
+
+  </form>
+</layout>

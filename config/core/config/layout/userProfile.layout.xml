@@ -1,0 +1,22 @@
+<layout name="userProfile" title="用户信息" use="lw-page-layout" query="user">
+  <lw-toolbar use="lw-toolbar">
+    <lw-button title="修改密码" event="action" action="chpassword">
+      <lw-form>
+        <lw-text name="password" title="密码" colspan="12" required="true" type="password" ignoreNameCheck="true" />
+        <lw-empty use="lw-empty" colspan="12"/>
+        <lw-text name="verifiedPassword" title="验证密码" colspan="12" required="true" type="password" ignoreNameCheck="true" />
+      </lw-form>
+    </lw-button>
+  </lw-toolbar>
+
+  <lw-tabs>
+    <lw-form title="基本信息">
+      <lw-text name="user_gid" title="用户GID" titleCode="model.user.user_gid" colspan="6" enabledJs="false" />
+      <lw-text name="user_xid" title="用户XID" titleCode="model.user.user_xid" colspan="6" enabledJs="false" />
+      <lw-text name="domain_name" title="域" titleCode="model.domain_name" colspan="6" enabledJs="false" />
+      <lw-empty use="lw-empty" colspan="6"/>
+      <lw-text name="username" title="用户名" titleCode="model.user.username" colspan="6" enabledJs="false" />
+      <lw-text name="default_role_gid" title="角色" titleCode="model.user.default_role_gid" colspan="6" enabledJs="false" />
+    </lw-form>
+  </lw-tabs>
+</layout>

@@ -1,0 +1,124 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"> 
+<xs:attributeGroup name="abstractRelation">
+	<xs:attribute name="name" type="xs:string" use="required">
+		<xs:annotation>
+			<xs:documentation>名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="model" type="xs:string" use="required">
+		<xs:annotation>
+			<xs:documentation>引用的表名（model或query的name）</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="title" type="xs:string">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="relationType" type="xs:string" default="left">
+		<xs:annotation>
+			<xs:documentation>关联方式</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="relation" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>引用其他的relation的name</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="localKey" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>relation为空时，为当前表的字段名称，否则为relation所引用的表的字段名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="referKey" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>引用的表的字段名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="ignoreDeleted" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="defValue" type="xs:string">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:attributeGroup>
+<xs:complexType name="join">
+	<xs:choice >
+		<xs:element name="moreRelationKey" type="relationKey" maxOccurs="unbounded" minOccurs="0"></xs:element>
+	</xs:choice>
+	<!-- 定义join标签的属性-->
+	<xs:attributeGroup ref="abstractRelation">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attributeGroup>
+	<xs:attribute name="fetch" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>
+				查询的字段，
+				多个字段使用,分隔，
+				每个字段可以使用=命名别名，
+				来自于join或extend的字段前使用前缀：join的name加双下划线
+				同一个字段不允许多次出现
+			</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="sql" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>
+				已废弃，不建议使用，如果要实现join一个group by的子查询结果，请使用groupQuery的定义
+				使用该定义时请确保model的定义是一个model的名称而不是query的名称，否则将发生不可预见的错误
+				被join的是一个group by的子查询结果，sql为定义该子查询的where条件
+			</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="groups" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>
+				已废弃，不建议使用，如果要实现join一个group by的子查询结果，请使用groupQuery的定义
+				使用该定义时请确保model的定义是一个model的名称而不是query的名称，否则将发生不可预见的错误
+				被join的是一个group by的子查询结果，groups为定义该子查询的group by字段，多个条件使用,分隔
+			</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="nullable" type="xs:boolean">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:complexType>
+<xs:complexType name="extend">
+	<xs:choice >
+		<xs:element name="moreRelationKey" type="relationKey" maxOccurs="unbounded" minOccurs="0"></xs:element>
+	</xs:choice>
+	<!-- 定义extend标签的属性-->
+	<xs:attributeGroup ref="abstractRelation"></xs:attributeGroup>
+</xs:complexType>
+<xs:complexType name="relationKey">
+	<xs:attribute name="relation" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>引用其他的relation的name</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="localKey" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>relation为空时，为当前表的字段名称，否则为relation所引用的表的字段名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="referKey" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>引用的表的字段名称</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+	<xs:attribute name="referValue" type="xs:string">
+		<xs:annotation>
+			<xs:documentation>指定referValue后，join on的条件不再去表中关联比较</xs:documentation>
+		</xs:annotation>
+	</xs:attribute>
+</xs:complexType>
+</xs:schema>

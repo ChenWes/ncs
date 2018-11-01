@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model xmlns="http://logwire.com/schema/model" includeAuditFields="true" includeDeletedField="false" includeDomainField="false" includeVersionField="true" managed="true" verboseName="接口表">
+  <fields>
+    <auto length="200" name="id" nullable="false" primaryKey="true" verboseName="编号"/>
+    <!-- <string length="500" name="type" nullable="true" primaryKey="false" verboseName="接口类型"/> -->
+    <!-- <string length="64" name="id_code" nullable="true" primaryKey="false" verboseName="接口账号"/> -->
+    <text name="msg_body" nullable="true" primaryKey="false" verboseName="请求内容"/>
+    <choice choicesCategory="接口方向" decimalPlaces="0" length="200" name="direction" nullable="false" primaryKey="false" verboseName="接口方向">
+      <helpText>输入/输出/</helpText>
+    </choice>
+    <string length="1000" name="msg_header" nullable="true" primaryKey="false" verboseName="请求头"/>
+    <string length="1000" name="msg_response" nullable="true" primaryKey="false" verboseName="响应"/>
+    <choice choicesCategory="状态" decimalPlaces="0" length="200" defaultValue="01" name="status" nullable="false" primaryKey="false" verboseName="状态">
+      <helpText>初始/成功/失败</helpText>
+    </choice>
+    <choice choicesCategory="接口类型" decimalPlaces="0" length="200" defaultValue="01" name="type" nullable="false" primaryKey="false" verboseName="接口类型">
+    </choice>
+    <choice choicesCategory="接口账号" decimalPlaces="0" length="200" defaultValue="01" name="id_code" nullable="false" primaryKey="false" verboseName="接口账号">
+    </choice>
+    <string length="1000" name="transmission" nullable="true" primaryKey="false" verboseName="OTM对象GID"/>
+    <string length="1000" name="transmission1" nullable="true" primaryKey="false" verboseName="OTM对象GID"/>
+    <string length="1000" name="rmk" nullable="true" primaryKey="false" verboseName="备注"/>
+      <integer decimalPlaces="0" length="0" name="send_tag" nullable="true" primaryKey="false" verboseName="发送标记"/>
+    <string length="1000" name="old_transmission" nullable="true" primaryKey="false" verboseName="BS对象GID"/>
+  </fields>
+</model>

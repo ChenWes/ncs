@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model xmlns="http://logwire.com/schema/model"
+       verboseName="首选项"
+       includeVersionField="true"
+       includeAuditFields="true">
+  <helpText>首选项</helpText>
+  <fields>
+    <string name="key" verboseName="选项名称" length="128" nullable="false" />
+    <choice name="scope" verboseName="作用范围" length="64" nullable="false" choicesCategory="preference_scope" />
+    <string name="object" verboseName="作用对象" length="128" nullable="true" />
+    <choice name="type" verboseName="类型" length="64" nullable="false" choicesCategory="preference_type" />
+    <string name="value" verboseName="值" length="240" nullable="false" />
+  </fields>
+  <indices>
+    <index unique="true">
+      <field>key</field>
+      <field>scope</field>
+      <field>object</field>
+    </index>
+  </indices>
+</model>

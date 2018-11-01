@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<model xmlns="http://logwire.com/schema/model" includeAuditFields="true" includeDeletedField="false" includeDomainField="false" includeVersionField="true" managed="true" verboseName="拼车规则表">
+
+  <fields>
+<auto length="200" name="id" nullable="false" primaryKey="true" verboseName="编号"/>
+<foreignKey decimalPlaces="0" length="200" name="bundle_rule" nullable="false" otherModel="bundle_rule" primaryKey="false" verboseName="所属规则组"/>
+
+
+<string length="200" name="direction" nullable="true" primaryKey="false" verboseName="方向"/>
+<foreignKey decimalPlaces="0" length="200" name="corporation_gid" nullable="true" otherModel="corporation" primaryKey="false" verboseName="供应商"/>
+<string length="300" name="suppliers_name" nullable="true" primaryKey="false" verboseName="相关供应商名称"/>
+<string length="300" name="suppliers_code" nullable="true" primaryKey="false" verboseName="相关供应商编码"/>
+<integer   length="3"  decimalPlaces="0" name="sort_number" nullable="false" primaryKey="false" verboseName="排序号"/>
+<foreignKey decimalPlaces="0" length="200" name="source_location_gid" nullable="false" otherModel="source_location" primaryKey="false" verboseName="始发点"/>
+<string length="200" name="source_location" nullable="true" primaryKey="false" verboseName="始发地"/>
+<string length="200" name="source_location_code" nullable="true" primaryKey="false" verboseName="始发地编码"/>
+<foreignKey decimalPlaces="0" length="200" name="dest_location_gid" nullable="false" otherModel="dest_location" primaryKey="false" verboseName="目的点"/>
+<string length="200" name="dest_location" nullable="true" primaryKey="false" verboseName="目的地"/>
+<string length="200" name="dest_location_code" nullable="true" primaryKey="false" verboseName="目的地编码"/>
+
+<foreignKey decimalPlaces="0" length="200" name="suppliers_address" nullable="true" otherModel="source_location" primaryKey="false" verboseName="供应商地址"/>
+<string length="200" name="suppliers_address_name" nullable="true" primaryKey="false" verboseName="相关供应商地址名称"/>
+<string length="200" name="suppliers_address_code" nullable="true" primaryKey="false" verboseName="相关供应商地址编码"/>
+  </fields>
+</model>

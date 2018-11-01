@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout name="bundle_ruleQueryPage" title="拼车规则表" use="lw-page-layout" query="bundle_ruleQuery" searchLayout="bundle_ruleQuerySearch">
+  <toolbar use="lw-toolbar">
+    <button title="新增" titleCode="layout.new" event="new" use="lw-button" permission=""/>
+    <button title="保存" titleCode="layout.save" event="save" use="lw-button" enabledByStatus="new,edit" permission=""/>
+    <button title="删除" titleCode="layout.delete" event="action" action="delete" use="lw-button" permission=""/>
+    <button title="返回" titleCode="layout.back" event="back" use="lw-button"/>
+  </toolbar>
+  <form use="lw-form-card" title="拼车规则">
+    <field name="code" title="规则编码" titleCode="model.repetition_schedule.code" use="lw-text" colspan="6" required="true"/>
+    <field name="name" title="规则名称" titleCode="model.repetition_schedule.type" use="lw-text" colspan="6" required="true"/>
+    <field name="suppliers_codes" title="相关供应商编码" titleCode="model.repetition_schedule.code" use="lw-text" colspan="6" required="true" enabled="false"/>
+    <field name="suppliers_names" title="相关供应商名称" titleCode="model.repetition_schedule.code" use="lw-text" colspan="6" required="true" enabled="false"/>
+    <field name="is_ns" title="发点到点可拼" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <field name="is_car_type" title="不同车型不可拼车" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+      <field name="is_different_car_type" title="不同车型可拼车" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <field name="is_split" title="是否可拆分" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <field name="time_priority" title="纳时优先" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <field name="attribute1" title="托盘铁架不可拼" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <field name="attribute2" title="跨纳时补余高" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <field name="attribute3" title="白晚班可拼" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+      <field name="attribute4" title="车长" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+        <field name="attribute5" title="实际车高" titleCode="model.repetition_schedule.is_important" use="lw-checkbox" colspan="6"/>
+    <lw-textarea name="special_rules" title="特殊规则" colspan="24" rows="3"/>
+    <lw-textarea name="rmk" title="备注" colspan="24" rows="1"/>
+
+  </form>
+
+  <div use="lw-row" colspan="24">
+    <list name="bundle_rule_direction" use="lw-item-list" multiple="true" index="true" title="拼车规则明细" colspan="24" height="200">
+      <!-- <field name="location__name" title="站点名称" titleCode="model.repetition_schedule_stop.location" use="lw-list-auto" valueField="name" api="location_approvedQuery/auto" suggestionWidth="300px" enabledJs="p.verify_status2 != '02'">
+                <attribute name="template">
+                    <![CDATA[${name}(${code})]]>
+                </attribute>
+                <attribute name="matchFields" value="name"/>
+                <attribute name="copyFrom" value="code,name"/>
+                <attribute name="copyTo" value="location,location__name"/>
+
+            </field> -->
+
+  <field name="source_location_code" title="始发地" titleCode="model.repetition_schedule.code" use="lw-list-auto" colspan="6" required="true" valueField="location_xid" api="source_locationQuery/auto">
+        <attribute name="matchFields" value="location_xid"/>
+        <attribute name="copyFrom" value="location_gid,location_name,location_xid,location_corporation__corporation_gid,corporation__corporation_name,corporation__corporation_xid"/>
+        <attribute name="copyTo" value="source_location_gid,source_location,source_location_code,corporation_gid,suppliers_name,suppliers_code"/>
+      </field>
+
+      <field name="dest_location_code" title="目的地" titleCode="model.repetition_schedule.code" use="lw-list-auto" colspan="6" required="true" valueField="location_xid" api="dest_locationQuery/auto">
+
+        <attribute name="matchFields" value="location_xid"/>
+        <attribute name="copyFrom" value="location_gid,location_name,location_xid"/>
+        <attribute name="copyTo" value="dest_location_gid,dest_location,dest_location_code"/>
+      </field>
+
+      <field name="suppliers_name" width="160" title="相关供应商名称" titleCode="model.repetition_schedule.code" use="lw-list-auto" required="true" valueField="corporation_name" api="corporationQuery/auto" suggestionWidth="500px">
+
+        <attribute name="matchFields" value="corporation_name"/>
+        <attribute name="copyFrom" value="corporation_gid,corporation_name,corporation_xid"/>
+        <attribute name="copyTo" value="corporation_gid,suppliers_name,suppliers_code"/>
+      </field>
+
+      <field name="suppliers_address_code" width="160" title="供应商地址" titleCode="model.repetition_schedule.code" use="lw-list-auto" required="true" valueField="location_xid" api="source_locationQuery/auto" suggestionWidth="500px">
+
+        <attribute name="matchFields" value="location_xid"/>
+        <attribute name="copyFrom" value="location_gid,location_name,location_xid"/>
+        <attribute name="copyTo" value="suppliers_address,suppliers_address_name,suppliers_address_code"/>
+      </field>
+
+      <field name="direction" title="方向" width="160" titleCode="model.repetition_schedule_stop.service_time" use="lw-list-text" enabled="false"/>
+      <field name="sort_number" title="排序号" titleCode="model.repetition_schedule_stop.service_time" use="lw-list-text" type="IntegerField"/>
+
+    </list>
+  </div>
+
+</layout>
